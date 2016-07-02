@@ -17,11 +17,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+/* Helvetica/Arial-based sans serif stack */
+font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 
 .navbar-inverse .navbar-brand {
     color: #E3E85A;
     font-family: 'sinkin_sans500_medium';
-    font-size:26px;
+    font-size:22px;
 }
