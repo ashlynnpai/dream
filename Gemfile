@@ -14,6 +14,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise', '>= 3.2.4'
 gem 'simple_form'
 #https://hackhands.com/pagination-rails-will_paginate-gem/
 gem 'will_paginate'
