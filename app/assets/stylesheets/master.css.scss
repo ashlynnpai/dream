@@ -1,5 +1,3 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
 .booyah-box {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
@@ -16,4 +14,14 @@
 h1, h2, h3, h4, h5, h6 {
   margin:0;
   padding:0;
+}
+
+body {
+  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #E3E85A;
+    font-family: 'sinkin_sans500_medium';
+    font-size:26px;
 }
