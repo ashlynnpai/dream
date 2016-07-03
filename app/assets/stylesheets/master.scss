@@ -17,13 +17,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-/* Helvetica/Arial-based sans serif stack */
-font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-
+  /* Helvetica/Arial-based sans serif stack */
+  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Subtle Patterns, Pink Rice by http://www.excogitoweb.it/ */
+  /* background: url('/assets/pink_rice.png'); */
+  background-color: #FAF9F4;
 }
 
-.navbar-inverse .navbar-brand {
-    color: #E3E85A;
-    font-family: 'sinkin_sans500_medium';
-    font-size:22px;
+.navbar-default .navbar-brand {
+  color: #5C5858;
+  font-family: 'sinkin_sans500_medium';
+  font-size:22px;
+}
+
+.navbar {
+  background-color: #5C5858;
+  background: rgba(0, 0, 0, 0.1);
 }
