@@ -11,4 +11,13 @@ feature "Sign in" do
     expect(page).to have_content "Signed in successfully."
   end
   
+  scenario "Sign in with incorrect credentials" do
+    user1 = Fabricate(:user)
+    visit new_user_session_path
+    fill_in 'Email', :with => user1.email
+    fill_in 'Password', :with => "wrong"
+    click_button 'Sign in'
+    expect(page).to have_content "Invalid Email or password."
+  end
+  
 end
