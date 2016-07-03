@@ -14,6 +14,11 @@ describe PlacesController, type: :controller do
       expect(response).to render_template("index")
     end
   end
+
+  before do
+    @user = Fabricate(:user)
+    sign_in @user
+  end
   
   describe 'GET new' do
     it 'sets @place' do
@@ -23,6 +28,7 @@ describe PlacesController, type: :controller do
   end
   
   describe 'POST create' do
+    
     it 'creates a place' do
       post :create, place: Fabricate.attributes_for(:place)
       expect(Place.count).to eq(1)
