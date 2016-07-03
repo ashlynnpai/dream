@@ -5,18 +5,20 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <p>Public display name</p>
-      <%= f.input :username, required: true %>
+      <br />
+      <%= f.input :username, required: true, hint: ("Your username will be displayed publicly") %>
       <%= f.input :email, required: true, autofocus: true %>
       <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
       <%= f.input :password_confirmation, required: true %>
+      <br />
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+      <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
     </div>
   <% end %>
-
+  <br />
+  <br />
   <%= render "devise/shared/links" %>
 
 </div>
