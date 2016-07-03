@@ -9,9 +9,23 @@ describe PlacesController, type: :controller do
       expect(assigns(:places)).to eq([place])
     end
     
-    it "renders the index template" do
+    it 'renders the index template' do
       get :index
-      expect(response).to render_template("index")
+      expect(response).to render_template('index')
+    end
+  end
+  
+  describe 'GET show' do
+    it 'sets @place' do
+      place = Fabricate(:place)
+      get :show, id: place.id
+      expect(assigns(:place)).to eq(place)
+    end
+    
+    it 'renders the show template' do
+      place = Fabricate(:place)
+      get :show, id: place.id
+      expect(response).to render_template('show')
     end
   end
 
@@ -28,7 +42,6 @@ describe PlacesController, type: :controller do
   end
   
   describe 'POST create' do
-    
     it 'creates a place' do
       post :create, place: Fabricate.attributes_for(:place)
       expect(Place.count).to eq(1)
