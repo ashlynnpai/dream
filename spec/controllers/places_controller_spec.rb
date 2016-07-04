@@ -120,5 +120,19 @@ describe PlacesController, type: :controller do
         expect(response).to be_forbidden
       end
     end
+    
+    context 'with invalid input' do
+      it 'does not update' do
+        place = Fabricate(:place, name: 'old name', user_id: @user.id)
+        put :update, {id: place.id, place: { name: nil }}
+        expect(place.reload.name).to eq('old name')
+      end
+      
+     it 'renders the edit template' do
+        place = Fabricate(:place, name: 'old name', user_id: @user.id)
+        put :update, {id: place.id, place: { name: nil }}
+        expect(response).to render_template('edit')
+      end
+    end
   end
 end  
