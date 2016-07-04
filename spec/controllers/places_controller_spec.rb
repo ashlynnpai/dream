@@ -20,7 +20,8 @@ describe PlacesController, type: :controller do
   describe 'GET new' do
     before do
       @user = Fabricate(:user)
-      sign_in @user
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@user)
     end
     it 'sets @place' do
       get :new
@@ -31,7 +32,8 @@ describe PlacesController, type: :controller do
   describe 'POST create' do
     before do
       @user = Fabricate(:user)
-      sign_in @user
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@user)
     end
     
     context 'with valid input' do
@@ -71,7 +73,8 @@ describe PlacesController, type: :controller do
   describe 'GET edit' do
     before do
       @user = Fabricate(:user)
-      sign_in @user
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@user)
     end
     
     context 'with the current user' do
@@ -101,14 +104,15 @@ describe PlacesController, type: :controller do
   describe 'PUT update' do
     before do
       @user = Fabricate(:user)
-      sign_in @user
+      allow(controller).to receive(:authenticate_user!).and_return(true)
+      allow(controller).to receive(:current_user).and_return(@user)
     end
     
     context 'with the current user' do
       it 'updates the attribute' do
-        place = Fabricate(:place, name: 'old name', user_id: @user.id)
-        put :update, {id: place.id, place: { name: 'new name' }}
-        expect(place.reload.name).to eq('new name')
+        place = Fabricate(:place, description: 'old description', user_id: @user.id)
+        put :update, {id: place.id, place: { description: 'new description' }}
+        expect(place.reload.description).to eq('new description')
       end
     end
     
@@ -122,11 +126,17 @@ describe PlacesController, type: :controller do
     end
     
     context 'with invalid input' do
-      it 'does not update' do
-        place = Fabricate(:place, name: 'old name', user_id: @user.id)
-        put :update, {id: place.id, place: { name: nil }}
-        expect(place.reload.name).to eq('old name')
+      it 'does not update a nil field' do
+        place = Fabricate(:place, description: 'old description', user_id: @user.id)
+        put :update, {id: place.id, place: { description: nil }}
+        expect(place.reload.description).to eq('old description')
       end
+      
+#       it 'does not update a locked attribute' do
+#         place = Fabricate(:place, name: 'old name', user_id: @user.id)
+#         put :update, {id: place.id, place: { name: 'new name' }}
+#         expect(place.reload.name).to eq('old name')
+#       end
       
      it 'renders the edit template' do
         place = Fabricate(:place, name: 'old name', user_id: @user.id)
