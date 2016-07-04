@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise', '>= 3.2.4'
+gem 'figaro', '>= 1.0.0'
+gem 'geocoder', '1.3.4'
 gem 'simple_form'
 #https://hackhands.com/pagination-rails-will_paginate-gem/
 gem 'will_paginate'
