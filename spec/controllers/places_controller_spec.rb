@@ -1,12 +1,14 @@
 require 'spec_helper'
+require 'pry'
 
 describe PlacesController, type: :controller do
   
   describe 'GET index' do
     it 'sets @places' do
-      place = Place.create
+      place = Fabricate(:place)
+      place2 = Fabricate(:place)
       get :index
-      expect(assigns(:places)).to eq([place])
+      expect(assigns(:places)).to eq([place, place2])
     end
     
     it 'renders the index template' do
@@ -31,9 +33,24 @@ describe PlacesController, type: :controller do
       @user = Fabricate(:user)
       sign_in @user
     end
-    it 'creates a place' do
-      post :create, place: Fabricate.attributes_for(:place)
-      expect(Place.count).to eq(1)
+    
+    context 'with valid input' do
+      it 'creates a place' do
+        post :create, place: Fabricate.attributes_for(:place)
+        expect(Place.count).to eq(1)
+      end
+    end
+    
+    context 'with invalid input' do
+      it 'does not create a new place' do
+        post :create, place: Fabricate.attributes_for(:place, name: nil)
+        expect(Place.count).to eq(0)
+      end
+      
+     it 'renders the new template' do
+        post :create, place: Fabricate.attributes_for(:place, name: nil)
+        expect(response).to render_template('new')
+      end
     end
   end
 
