@@ -14,7 +14,29 @@ describe PlacesController, type: :controller do
       expect(response).to render_template('index')
     end
   end
+    
+  describe 'GET new' do
+    before do
+      @user = Fabricate(:user)
+      sign_in @user
+    end
+    it 'sets @place' do
+      get :new
+      expect(assigns(:place)).to be_a_new(Place)
+    end
+  end
   
+  describe 'POST create' do
+    before do
+      @user = Fabricate(:user)
+      sign_in @user
+    end
+    it 'creates a place' do
+      post :create, place: Fabricate.attributes_for(:place)
+      expect(Place.count).to eq(1)
+    end
+  end
+
   describe 'GET show' do
     it 'sets @place' do
       place = Fabricate(:place)
@@ -48,25 +70,16 @@ describe PlacesController, type: :controller do
     end
   end
   
-  describe 'GET new' do
+  describe 'PUT update' do
     before do
       @user = Fabricate(:user)
       sign_in @user
     end
-    it 'sets @place' do
-      get :new
-      expect(assigns(:place)).to be_a_new(Place)
+    
+    it 'updates the attribute' do
+      place = Fabricate(:place, name: 'old name', user_id: @user.id)
+      put :update, {id: place.id, place: { name: 'new name' }}
+      expect(place.reload.name).to eq('new name')
     end
   end
-  
-  describe 'POST create' do
-    before do
-      @user = Fabricate(:user)
-      sign_in @user
-    end
-    it 'creates a place' do
-      post :create, place: Fabricate.attributes_for(:place)
-      expect(Place.count).to eq(1)
-    end
-  end
-end
+end  
