@@ -57,16 +57,27 @@ describe PlacesController, type: :controller do
       sign_in @user
     end
     
-    it 'sets @place' do
-      place = Fabricate(:place, user_id: @user.id)
-      get :edit, id: place.id
-      expect(assigns(:place)).to eq(place)
+    context 'with the current user' do
+      it 'sets @place' do
+        place = Fabricate(:place, user_id: @user.id)
+        get :edit, id: place.id
+        expect(assigns(:place)).to eq(place)
+      end
+
+      it 'renders the edit template' do
+        place = Fabricate(:place, user_id: @user.id)
+        get :edit, id: place.id
+        expect(response).to render_template('edit')
+      end
     end
     
-    it 'renders the edit template' do
-      place = Fabricate(:place, user_id: @user.id)
-      get :edit, id: place.id
-      expect(response).to render_template('edit')
+    context 'not with the current user' do
+      it 'renders an error' do
+        creator = Fabricate(:user)
+        place = Fabricate(:place, user_id: creator.id)
+        get :edit, id: place.id
+        expect(response).to be_forbidden
+      end
     end
   end
   
@@ -76,10 +87,21 @@ describe PlacesController, type: :controller do
       sign_in @user
     end
     
-    it 'updates the attribute' do
-      place = Fabricate(:place, name: 'old name', user_id: @user.id)
-      put :update, {id: place.id, place: { name: 'new name' }}
-      expect(place.reload.name).to eq('new name')
+    context 'with the current user' do
+      it 'updates the attribute' do
+        place = Fabricate(:place, name: 'old name', user_id: @user.id)
+        put :update, {id: place.id, place: { name: 'new name' }}
+        expect(place.reload.name).to eq('new name')
+      end
+    end
+    
+   context 'not with the current user' do
+      it 'renders an error' do
+        creator = Fabricate(:user)
+        place = Fabricate(:place, name: 'old name', user_id: creator.id)
+        put :update, {id: place.id, place: { name: 'new name' }}
+        expect(response).to be_forbidden
+      end
     end
   end
 end  
