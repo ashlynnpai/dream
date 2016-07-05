@@ -10,4 +10,8 @@ class Place < ActiveRecord::Base
   validates :address, presence: true
   validates :description, presence: true
   
+  def rating
+    comments.average(:rating) if comments.average(:rating)
+  end
+  
 end
