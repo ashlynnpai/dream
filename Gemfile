@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'carrierwave'
 gem 'devise', '>= 3.2.4'
 gem 'figaro', '>= 1.0.0'
 gem 'geocoder', '1.3.4'
