@@ -58,7 +58,7 @@
   </div>  
   <div class="pull-left">
     <% if current_user %>
-      <%= link_to 'Add to my Bucket List', buckets_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+      <%= link_to 'Add to my Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
     <% end %>
   </div>
 </div>  
