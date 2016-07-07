@@ -2,7 +2,7 @@ class BucketsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @buckets = current_user.buckets
+    @buckets = current_user.buckets.todo
   end
   
   def create
