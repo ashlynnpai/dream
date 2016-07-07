@@ -11,6 +11,10 @@ class BucketsController < ApplicationController
     redirect_to buckets_path
   end
   
+  def visited
+    @buckets_done = current_user.buckets.done
+  end
+  
   private
   
   def last_position
