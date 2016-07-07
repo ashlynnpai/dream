@@ -1,0 +1,2 @@
+Fabricator(:bucket) do
+end

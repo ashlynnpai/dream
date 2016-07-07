@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :photos, only: :create
   end
   
+  resources :buckets, only: [:index, :create]
+  
 end

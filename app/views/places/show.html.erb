@@ -56,6 +56,11 @@
       <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
     <% end %>
   </div>  
+  <div class="pull-left">
+    <% if current_user %>
+      <%= link_to 'Add to my Bucket List', buckets_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+  </div>
 </div>  
 
 <div class="booyah-box col-xs-10 col-xs-offset-1">
