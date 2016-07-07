@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   end
   
   get 'bucketlist', to: 'buckets#index'
+  put 'toggle_visited', to: 'buckets#toggle_visited'
   
 end

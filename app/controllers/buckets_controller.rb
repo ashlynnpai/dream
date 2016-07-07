@@ -7,7 +7,7 @@ class BucketsController < ApplicationController
   
   def create
     @place = Place.find(params[:place_id])
-    Bucket.create(place: @place, user: current_user, position: last_position) unless current_user.buckets.map(&:place).include?(@place)
+    Bucket.create(place: @place, user: current_user, position: last_position, list_state: "todo") unless current_user.buckets.map(&:place).include?(@place)
     redirect_to buckets_path
   end
   
@@ -15,9 +15,23 @@ class BucketsController < ApplicationController
     @buckets_done = current_user.buckets.done
   end
   
+  def toggle_visited
+    @bucket = Bucket.find(params[:id])
+    @bucket.update_attributes(bucket_params)
+    if @bucket.valid?
+      redirect_to buckets_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
   private
   
   def last_position
     current_user.buckets.count + 1
+  end
+  
+  def bucket_params
+    params.require(:bucket).permit(:position, :list_state)
   end
 end
