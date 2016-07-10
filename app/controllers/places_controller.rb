@@ -32,18 +32,13 @@ class PlacesController < ApplicationController
   def edit
     @place = Place.find(params[:id])
     
-    if @place.user != current_user
-      return render text: 'Not Allowed', status: :forbidden
-    end
+    return render text: 'Not Allowed', status: :forbidden unless @place.user == current_user || current_user.admin?
   end
   
   def update
     @place = Place.find(params[:id])
-    if @place.user != current_user
-      return render text: 'Not Allowed', status: :forbidden
-    end
+    return render text: 'Not Allowed', status: :forbidden unless @place.user == current_user || current_user.admin?
     @place.update_attributes(place_params)
-    #@place.update_attribute(:description, params[:description])
     if @place.valid?
       redirect_to root_path
     else
@@ -54,6 +49,10 @@ class PlacesController < ApplicationController
   private
   
   def place_params
-    params.require(:place).permit(:name, :address, :description)
+    if current_user.admin? || @place.nil?
+      params.require(:place).permit(:name, :address, :description)
+    else
+      params.require(:place).permit(:description)
+    end
   end
 end
