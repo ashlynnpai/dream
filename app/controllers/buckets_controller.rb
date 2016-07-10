@@ -21,10 +21,6 @@ class BucketsController < ApplicationController
     end
   end
   
-  def visited
-    @buckets_done = current_user.buckets.done
-  end 
-  
   private
   
   def last_position
