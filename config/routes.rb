@@ -8,12 +8,13 @@ Rails.application.routes.draw do
     resources :photos, only: :create
   end
   
-  resources :buckets, only: [:create, :update] do
+  resources :buckets, only: [:update] do
     collection do
       get 'visited'
     end
   end
   
   get 'bucketlist', to: 'buckets#index'
+  post 'bucketlist', to: 'buckets#create'
   
 end
