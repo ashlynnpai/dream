@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   
   resources :users, only: [:show, :update]
+  resource :dashboard, only: [:show]
   
   resources :buckets, only: [:update]  
   resources :completed_buckets, only: [:index]
