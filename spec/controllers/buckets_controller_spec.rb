@@ -52,7 +52,7 @@ RSpec.describe BucketsController, type: :controller do
     end
   end
   
-  describe 'PUT toggle_visited' do
+  describe 'PUT update' do
     context "with authenticated user" do
       let(:place) { Fabricate(:place) }
       before do
@@ -62,7 +62,7 @@ RSpec.describe BucketsController, type: :controller do
       end  
       it 'changes the list state' do
         bucket = Bucket.create(place_id: place.id, user_id: @user.id, list_state: 'todo')
-        put :toggle_visited, {id: bucket.id, bucket: { list_state: 'done' }}
+        put :update, {id: bucket.id, bucket: { list_state: 'done' }}
         expect(bucket.reload.list_state).to eq('done')
       end
     end

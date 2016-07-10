@@ -11,11 +11,7 @@ class BucketsController < ApplicationController
     redirect_to bucketlist_path
   end
   
-  def visited
-    @buckets_done = current_user.buckets.done
-  end
-  
-  def toggle_visited
+  def update
     @bucket = Bucket.find(params[:id])
     @bucket.update_attributes(bucket_params)
     if @bucket.valid?
@@ -24,6 +20,10 @@ class BucketsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
   end
+  
+  def visited
+    @buckets_done = current_user.buckets.done
+  end 
   
   private
   
