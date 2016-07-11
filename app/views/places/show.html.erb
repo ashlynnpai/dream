@@ -76,7 +76,8 @@
 
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <% @place.photos.each do |photo| %>
-    <%= image_tag(photo.image_url) if photo.image? %>
+    <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
+    <br />
     <%= photo.caption if photo.caption? %>
   <% end %>
 </div>  
