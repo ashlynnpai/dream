@@ -18,6 +18,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'devise', '>= 3.2.4'
 gem 'figaro', '>= 1.0.0'
+gem 'file_validators'
 gem 'geocoder', '1.3.4'
 gem 'simple_form'
 #https://hackhands.com/pagination-rails-will_paginate-gem/
