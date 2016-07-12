@@ -2,16 +2,22 @@
 
   <%= @user.username %>
 
+</div>
+
+<div class="col-xs-8 col-xs-offset-2">
+  
   <% if @user.public_profile? %>
     <p>Your profile is public</p>
   <% else %>
     <p>Your profile is private</p>
   <% end %>
-</div>
-
-<div class="col-xs-8 col-xs-offset-2">
+  
+  <h3>Change profile privacy settings</h3>
+  <br />
   <%= simple_form_for @user do |f| %>
-    <%= f.input :public_profile, collection: [true, false] %>
+    <%= f.collection_radio_buttons :public_profile, [[true, 'Public'] ,[false, 'Private']], :first, :last %>
+    <br />
+    <br />
     <%= f.button :submit %>
   <% end %>
 </div>  
