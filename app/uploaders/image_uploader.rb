@@ -4,7 +4,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  include CarrierWave::MiniMagick
 
   include Cloudinary::CarrierWave
   
@@ -13,7 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :standard do
     process :eager => true
     process :convert => 'jpg'
-    #process :resize_to_fill => [250, 250, :fill]
+    process :resize_to_fill => [250, 250, :fill]
     cloudinary_transformation :quality => "auto"
   end
   # Choose what kind of storage to use for this uploader:
