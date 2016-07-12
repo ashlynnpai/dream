@@ -12,7 +12,7 @@ RSpec.describe PhotosController, type: :controller do
         allow(controller).to receive(:current_user).and_return(@user)
       end
 
-      it 'creates a review' do
+      it 'creates a photo' do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
         expect(Photo.count).to eq(1)
       end
@@ -20,6 +20,16 @@ RSpec.describe PhotosController, type: :controller do
       it 'redirects to the place path' do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
         expect(response).to redirect_to place_path(place)        
+      end
+      
+      it 'associates the user with the photo' do
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        expect(Photo.first.user).to eq(@user)
+      end
+      
+      it 'associates the place with the photo' do
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        expect(Photo.first.place).to eq(place)
       end
     end
   end
