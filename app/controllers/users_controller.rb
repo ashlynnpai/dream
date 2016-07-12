@@ -10,13 +10,13 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     return render text: 'Not Allowed', status: :forbidden unless @user == current_user || current_user.admin?
     @user.update_attributes(user_params)
     if @user.valid?
-      redirect_to root_path
+      redirect_to dashboard_path
      else
-      render :edit, status: :unprocessable_entity
+      render text: 'Not Updated', status: :unprocessable_entity
     end  
   end
 end

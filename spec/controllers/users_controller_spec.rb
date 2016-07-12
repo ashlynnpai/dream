@@ -34,14 +34,14 @@ RSpec.describe UsersController, type: :controller do
   
   describe 'PUT update' do
     context 'with the current user' do       
-      let(:user) { Fabricate(:user) }
+      let(:user) { Fabricate(:user, public_profile: false) }
       before do
         allow(controller).to receive(:authenticate_user!).and_return(true)
         allow(controller).to receive(:current_user).and_return(user)
       end
       it 'updates the public_profile' do
-        put :update, {id: user.id, user: { public_profile: false }}
-        expect(user.reload.public_profile).to eq(false)
+        put :update, {id: user.id, user: { public_profile: true }}
+        expect(user.reload.public_profile).to eq(true)
       end  
     end
   end
