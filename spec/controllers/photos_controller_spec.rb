@@ -32,5 +32,17 @@ RSpec.describe PhotosController, type: :controller do
         expect(Photo.first.place).to eq(place)
       end
     end
+    
+    context 'with authenticated users' do
+      it 'does not create a photo' do
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        expect(Photo.count).to eq(0)
+      end  
+      
+      it 'redirects to the new_user_session path' do
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        expect(response).to redirect_to new_user_session_path        
+      end
+    end
   end
 end
