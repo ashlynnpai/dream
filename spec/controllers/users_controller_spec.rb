@@ -3,16 +3,32 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   
   describe 'GET show' do
-    it 'sets @user' do
-      user = Fabricate(:user)
-      get :show, id: user.id
-      expect(assigns(:user)).to eq(user)
+    context "if the user's profile is public" do
+      it 'sets @user' do
+        user = Fabricate(:user, public_profile: true)
+        get :show, id: user.id
+        expect(assigns(:user)).to eq(user)
+      end
+
+      it 'renders the show template' do
+        user = Fabricate(:user, public_profile: true)
+        get :show, id: user.id
+        expect(response).to render_template('show')
+      end
     end
     
-    it 'renders the show template' do
-      user = Fabricate(:user)
-      get :show, id: user.id
-      expect(response).to render_template('show')
+    context "if the user's profile is private" do
+      it 'does not set @user' do
+        user = Fabricate(:user, public_profile: false)
+        get :show, id: user.id
+        expect(assigns(:user)).to be_blank
+      end
+      
+      it 'renders text that the profile is private' do
+        user = Fabricate(:user, public_profile: false)
+        get :show, id: user.id
+        response.body.should match(/That member's profile is private/)
+      end
     end
   end
   
