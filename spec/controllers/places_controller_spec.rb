@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe PlacesController, type: :controller do
   
@@ -18,10 +17,10 @@ describe PlacesController, type: :controller do
   end
     
   describe 'GET new' do
+    let(:user) { Fabricate(:user) }
     before do
-      @user = Fabricate(:user)
       allow(controller).to receive(:authenticate_user!).and_return(true)
-      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
     it 'sets @place' do
       get :new
@@ -30,12 +29,12 @@ describe PlacesController, type: :controller do
   end
   
   describe 'POST create' do
+    let(:user) { Fabricate(:user) }
     before do
-      @user = Fabricate(:user)
       allow(controller).to receive(:authenticate_user!).and_return(true)
-      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
-    
+ 
     context 'with valid input' do
       it 'creates a place' do
         post :create, place: Fabricate.attributes_for(:place)
@@ -71,21 +70,21 @@ describe PlacesController, type: :controller do
   end
   
   describe 'GET edit' do
+    let(:user) { Fabricate(:user) }
     before do
-      @user = Fabricate(:user)
       allow(controller).to receive(:authenticate_user!).and_return(true)
-      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
     
     context 'with the current user' do
       it 'sets @place' do
-        place = Fabricate(:place, user_id: @user.id)
+        place = Fabricate(:place, user_id: user.id)
         get :edit, id: place.id
         expect(assigns(:place)).to eq(place)
       end
 
       it 'renders the edit template' do
-        place = Fabricate(:place, user_id: @user.id)
+        place = Fabricate(:place, user_id: user.id)
         get :edit, id: place.id
         expect(response).to render_template('edit')
       end
@@ -102,15 +101,15 @@ describe PlacesController, type: :controller do
   end
   
   describe 'PUT update' do
+    let(:user) { Fabricate(:user) }
     before do
-      @user = Fabricate(:user)
       allow(controller).to receive(:authenticate_user!).and_return(true)
-      allow(controller).to receive(:current_user).and_return(@user)
+      allow(controller).to receive(:current_user).and_return(user)
     end
     
     context 'with the current user' do
       it 'updates the attribute' do
-        place = Fabricate(:place, description: 'old description', user_id: @user.id)
+        place = Fabricate(:place, description: 'old description', user_id: user.id)
         put :update, {id: place.id, place: { description: 'new description' }}
         expect(place.reload.description).to eq('new description')
       end
@@ -127,19 +126,19 @@ describe PlacesController, type: :controller do
     
     context 'with invalid input' do
       it 'does not update a nil field' do
-        place = Fabricate(:place, description: 'old description', user_id: @user.id)
+        place = Fabricate(:place, description: 'old description', user_id: user.id)
         put :update, {id: place.id, place: { description: nil }}
         expect(place.reload.description).to eq('old description')
       end
       
       it 'does not update a locked attribute' do
-        place = Fabricate(:place, name: 'old name', user_id: @user.id)
+        place = Fabricate(:place, name: 'old name', user_id: user.id)
         put :update, {id: place.id, place: { name: 'new name' }}
         expect(place.reload.name).to eq('old name')
       end
       
      it 'renders the edit template' do
-        place = Fabricate(:place, description: 'old description', user_id: @user.id)
+        place = Fabricate(:place, description: 'old description', user_id: user.id)
         put :update, {id: place.id, place: { description: nil }}
         expect(response).to render_template('edit')
       end

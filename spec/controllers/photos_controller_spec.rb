@@ -4,12 +4,12 @@ RSpec.describe PhotosController, type: :controller do
   
   describe 'POST create' do
     let(:place) { Fabricate(:place) }
+    let(:user) { Fabricate(:user) }
      
     context 'with authenticated users' do
       before do
-        @user = Fabricate(:user)
         allow(controller).to receive(:authenticate_user!).and_return(true)
-        allow(controller).to receive(:current_user).and_return(@user)
+        allow(controller).to receive(:current_user).and_return(user)
       end
 
       it 'creates a photo' do
@@ -24,7 +24,7 @@ RSpec.describe PhotosController, type: :controller do
       
       it 'associates the user with the photo' do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
-        expect(Photo.first.user).to eq(@user)
+        expect(Photo.first.user).to eq(user)
       end
       
       it 'associates the place with the photo' do
