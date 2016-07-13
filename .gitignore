@@ -12,6 +12,9 @@
 !/log/.keep
 /tmp
 
+#Carrierwave using this as tmp dir
+public/uploads/*/
+
 # Ignore application configuration
 /config/application.yml
 

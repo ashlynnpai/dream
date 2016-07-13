@@ -13,9 +13,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :standard do
     process :eager => true
     process :convert => 'jpg'
-    process :resize_to_fill => [250, 250, :fill]
-    cloudinary_transformation :quality => "auto"
+    #process :resize_to_fill => [250, 250, :fill]
+    cloudinary_transformation :quality => "auto", :width => 400
   end
+  
   # Choose what kind of storage to use for this uploader:
   # storage :file
   # storage :fog
