@@ -52,8 +52,10 @@
 <br /> 
 <br />   
   <div class="pull-left">
-    <% if current_user && current_user == @place.user %>
-      <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
+    <% if current_user %> 
+      <% if current_user == @place.user || current_user.admin? %>  
+        <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
+      <% end %>
     <% end %>
   </div>  
   <div class="pull-right">
