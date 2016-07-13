@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :buckets, only: [:update]  
   resources :completed_buckets, only: [:index]
   
+  resources :photos, only: :show
+  
+ 
+  
   get 'bucketlist', to: 'buckets#index'
   post 'bucketlist', to: 'buckets#create'
   

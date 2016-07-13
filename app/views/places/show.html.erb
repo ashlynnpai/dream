@@ -65,7 +65,10 @@
 
 <div class="booyah-box col-xs-10 col-xs-offset-1">
   <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+    <%= f.error_notification %>
+    <br />
     <%= f.file_field :image %>
+    <br />
     <%= f.input :caption %>
     <%= f.input :owner %>
     <%= f.input :copyright %>
@@ -79,6 +82,7 @@
     <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
     <br />
     <%= photo.caption if photo.caption? %>
+    <%= link_to 'See Photo', photo_path(photo) %>
   <% end %>
 </div>  
 

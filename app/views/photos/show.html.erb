@@ -1,0 +1,9 @@
+<div class="booyah-box col-xs-10 col-xs-offset-1">
+
+<%= image_tag(@photo.image_url, :width=>600) if @photo.image? %>
+<br />
+<%= @photo.caption if @photo.caption? %>
+<%= @photo.owner if @photo.owner? %>
+<%= @photo.copyright if @photo.copyright? %>
+
+</div>  

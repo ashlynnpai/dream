@@ -13,7 +13,7 @@ RSpec.describe PhotosController, type: :controller do
       end
 
       it 'creates a photo' do
-        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
         expect(Photo.count).to eq(1)
       end
 
@@ -43,6 +43,23 @@ RSpec.describe PhotosController, type: :controller do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
         expect(response).to redirect_to new_user_session_path        
       end
+    end
+  end
+  
+  describe 'GET show' do
+    let(:place) { Fabricate(:place) }
+    let(:user) { Fabricate(:user) }
+    
+    it 'sets @show' do
+      photo = Fabricate(:photo, place_id: place.id, user_id: user.id)
+      get :show
+      expect(assigns(:photo)).to eq(photo)
+    end
+    
+    it 'renders the template show' do
+      photo = Fabricate(:photo, place_id: place.id, user_id: user.id)
+      get :show
+      expect(response).to render_template('show')
     end
   end
 end
