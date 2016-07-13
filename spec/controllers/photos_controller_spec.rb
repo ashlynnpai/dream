@@ -18,22 +18,22 @@ RSpec.describe PhotosController, type: :controller do
       end
 
       it 'redirects to the place path' do
-        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
         expect(response).to redirect_to place_path(place)        
       end
       
       it 'associates the user with the photo' do
-        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
         expect(Photo.first.user).to eq(user)
       end
       
       it 'associates the place with the photo' do
-        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
         expect(Photo.first.place).to eq(place)
       end
     end
     
-    context 'with authenticated users' do
+    context 'with unauthenticated users' do
       it 'does not create a photo' do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id
         expect(Photo.count).to eq(0)
@@ -52,13 +52,13 @@ RSpec.describe PhotosController, type: :controller do
     
     it 'sets @show' do
       photo = Fabricate(:photo, place_id: place.id, user_id: user.id)
-      get :show
+      get :show, id: photo.id
       expect(assigns(:photo)).to eq(photo)
     end
     
     it 'renders the template show' do
       photo = Fabricate(:photo, place_id: place.id, user_id: user.id)
-      get :show
+      get :show, id: photo.id
       expect(response).to render_template('show')
     end
   end
