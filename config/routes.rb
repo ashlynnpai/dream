@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :update]
   resource :dashboard, only: [:show]
   
-  resources :buckets, only: [:update]  
+  resources :buckets, only: [:update, :destroy]  
   resources :completed_buckets, only: [:index]
   
   resources :photos, only: [:show, :destroy]

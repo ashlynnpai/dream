@@ -21,6 +21,12 @@ class BucketsController < ApplicationController
     end
   end
   
+  def destroy
+    @bucket = Bucket.find(params[:id])
+    @bucket.destroy
+    redirect_to bucketlist_path
+  end
+  
   private
   
   def last_position
