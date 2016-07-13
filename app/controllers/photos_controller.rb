@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:creat, :destroy]
+  before_action :authenticate_user!, only: [:create, :destroy]
   
   def create
     @place = Place.find(params[:place_id])

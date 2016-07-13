@@ -6,6 +6,8 @@
 <%= @photo.owner if @photo.owner? %>
 <%= @photo.copyright if @photo.copyright? %>
   
-<%= link_to 'Remove Photo', photo_path(@photo), method: :delete, data: {confirm: 'Are you sure you want to remove this?'},class: 'btn btn-danger' %>  
+<% if current_user == @photo.user %>  
+  <%= link_to 'Remove Photo', photo_path(@photo), method: :delete, data: {confirm: 'Are you sure you want to remove this?'},class: 'bt  n btn-danger' %>  
+<% end %>  
 
 </div>  
