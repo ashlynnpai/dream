@@ -62,4 +62,21 @@ RSpec.describe PhotosController, type: :controller do
       expect(response).to render_template('show')
     end
   end
+  
+  describe 'DELETE destroy' do
+    let(:place) { Fabricate(:place) }
+    let(:user) { Fabricate(:user) }
+    before do
+        allow(controller).to receive(:authenticate_user!).and_return(true)
+        allow(controller).to receive(:current_user).and_return(user)
+    end
+    context 'with the current user as the user associated with the photo' do
+      it 'destroys the photo' do
+        photo = Fabricate(:photo, place_id: place.id, user_id: user.id)
+        delete :destroy, {id: photo.id}
+        expect(Photo.count).to eq(0)
+      end
+    end
+  end
 end
+  

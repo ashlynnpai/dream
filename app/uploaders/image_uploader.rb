@@ -13,6 +13,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :standard do
     process :eager => true
     process :convert => 'jpg'
+    #if width is greater than 600, resize width to 600
+    process :resize_to_limit => [600, nil]
     #process :resize_to_fill => [250, 250, :fill]
     cloudinary_transformation :quality => "auto", :width => 400
   end
