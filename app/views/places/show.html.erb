@@ -59,7 +59,7 @@
     <% end %>
   </div>  
   <div class="pull-right">
-    <% if current_user %>
+    <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
       <%= link_to 'Add to my Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
     <% end %>
   </div>
