@@ -3,9 +3,7 @@ class PhotosController < ApplicationController
   
   def create
     @place = Place.find(params[:place_id])
-    #binding.pry
-    @place.photos.create(photo_params)
-    
+    @place.photos.create(photo_params)   
     redirect_to place_path(@place)
   end
   
