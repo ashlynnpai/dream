@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   
   resources :buckets, only: [:update, :destroy]  
-  resources :completed_buckets, only: [:index]
+  resources :completed_buckets, only: [:index, :destroy]
   
   resources :photos, only: [:show, :destroy]
   
