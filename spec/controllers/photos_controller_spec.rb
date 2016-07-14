@@ -12,11 +12,9 @@ RSpec.describe PhotosController, type: :controller do
         allow(controller).to receive(:current_user).and_return(user)
       end
 
-      it 'creates a photo' do
-     
-        photo = Fabricate.attributes_for(:photo)
-        
-        photo[:image]=fixture_file_upload('tower.jpg', 'image/jpg')
+      it 'creates a photo' do 
+        photo = Fabricate.attributes_for(:photo)  
+        #photo[:image]=fixture_file_upload('tower.jpg', 'image/jpg')
         post :create, photo: photo, place_id: place.id, user_id: user.id
         expect(Photo.count).to eq(1)
       end
