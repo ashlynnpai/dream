@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
   
   def create
     @place = Place.find(params[:place_id])
-    @place.comments.create(comment_params.merge(user: current_user))
+    @place.comments.create(comment_params)
     redirect_to place_path(@place)
   end
   
   private
   
   def comment_params
-    params.require(:comment).permit(:message, :rating)
+    params.require(:comment).permit(:message, :rating).merge(user: current_user)
   end
 end
