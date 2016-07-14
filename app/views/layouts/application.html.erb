@@ -25,11 +25,10 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <%= link_to 'New Place', new_place_path %>
-        <%= link_to 'My Bucket List', bucketlist_path %>
-        <%= link_to 'Buckets Done', completed_buckets_path %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <li><%= link_to 'My Bucket List', bucketlist_path %></li>
           <li><%= link_to 'Dashboard', dashboard_path %></li>
           <li><%= link_to 'Profile', user_path(current_user) %></li>
           <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
