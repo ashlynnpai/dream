@@ -1,4 +1,5 @@
 class Place < ActiveRecord::Base
+  include PgSearch
   
   belongs_to :user
   has_many :comments
@@ -15,5 +16,9 @@ class Place < ActiveRecord::Base
   def rating
     comments.average(:rating) if comments.average(:rating)
   end
+  
+   pg_search_scope :kinda_spelled_like,
+                  :against => [:name, :address],
+                  :using => :trigram
   
 end
