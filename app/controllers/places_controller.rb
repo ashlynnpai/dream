@@ -46,6 +46,10 @@ class PlacesController < ApplicationController
     end
   end
   
+  def search
+    @results = Place.kinda_spelled_like(params[:q])
+  end
+  
   private
   
   def place_params

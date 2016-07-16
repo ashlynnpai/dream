@@ -26,6 +26,12 @@
       <ul class="nav navbar-nav">
         <%= link_to 'New Place', new_place_path %>
       </ul>
+    <div class="form-group navbar-form" role="search">
+       <%= form_tag search_places_path, :method => 'get' do %>
+       <%= text_field_tag :q, nil, :class => 'search-box', :placeholder => 'Search Places' %>
+       <%= submit_tag "Search", :class => 'btn' %>
+       <% end %>
+    </div>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li><%= link_to 'My Bucket List', bucketlist_path %></li>
