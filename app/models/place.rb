@@ -19,6 +19,8 @@ class Place < ActiveRecord::Base
   
    pg_search_scope :kinda_spelled_like,
                   :against => [:name, :address],
-                  :using => :trigram
-  
+                  :using => { :tsearch => { :prefix => true },
+                  :trigram => { :only => :name }
+                    }
+
 end
