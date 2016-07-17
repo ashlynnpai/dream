@@ -1,4 +1,42 @@
+<%= link_to "Didn't find what you were looking for?", new_place_path %>
+<br />
 <% @results.each do |result| %>
   <%= result.name %>
   <%= result.address %>
 <% end %>
+
+<div class="clear"></div>
+
+<% if current_user %>
+  <!-- Modal -->
+  <div class="modal fade" id="placeModal" tabindex="-1" role="dialog" aria-labelledby="placeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="placeModalLabel">Add a place</h4>
+        </div>
+        <div class="modal-body">
+           <%= simple_form_for @place do |f| %>
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%= f.input :description %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit 'Create', class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-10 col-xs-offset-1">
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#placeModal">
+      Add a place
+    </button>
+</div>
+<% end %>
+
+<div class="clear"></div>

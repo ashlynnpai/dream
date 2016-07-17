@@ -23,9 +23,6 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <%= link_to 'New Place', new_place_path %>
-      </ul>
     <div class="form-group navbar-form" role="search">
        <%= form_tag search_places_path, :method => 'get' do %>
        <%= text_field_tag :q, nil, :class => 'search-box', :placeholder => 'Search Places' %>

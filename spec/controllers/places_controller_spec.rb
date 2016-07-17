@@ -16,14 +16,14 @@ describe PlacesController, type: :controller do
     end
   end
     
-  describe 'GET new' do
+  describe 'GET search' do
     let(:user) { Fabricate(:user) }
     before do
       allow(controller).to receive(:authenticate_user!).and_return(true)
       allow(controller).to receive(:current_user).and_return(user)
     end
     it 'sets @place' do
-      get :new
+      get :search
       expect(assigns(:place)).to be_a_new(Place)
     end
   end
@@ -50,7 +50,7 @@ describe PlacesController, type: :controller do
       
      it 'renders the new template' do
         post :create, place: Fabricate.attributes_for(:place, name: nil)
-        expect(response).to render_template('new')
+        expect(response).to render_template('search')
       end
     end
   end

@@ -10,16 +10,12 @@ class PlacesController < ApplicationController
     end
   end
   
-  def new
-    @place = Place.new
-  end
-  
   def create
     @place = current_user.places.create(place_params)
     if @place.valid?
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render :search, status: :unprocessable_entity
     end
   end
   
@@ -48,6 +44,7 @@ class PlacesController < ApplicationController
   
   def search
     @results = Place.kinda_spelled_like(params[:q])
+    @place = Place.new
   end
   
   private
