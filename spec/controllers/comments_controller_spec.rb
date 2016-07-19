@@ -6,10 +6,10 @@ RSpec.describe CommentsController, type: :controller do
     let(:place) { Fabricate(:place) }
      
     context 'with authenticated users' do
+      let(:user) { Fabricate(:user) }
       before do
-        @user = Fabricate(:user)
         allow(controller).to receive(:authenticate_user!).and_return(true)
-        allow(controller).to receive(:current_user).and_return(@user)
+        allow(controller).to receive(:current_user).and_return(user)
       end
       
       it 'creates a review' do
@@ -23,5 +23,4 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
   end
-
 end
