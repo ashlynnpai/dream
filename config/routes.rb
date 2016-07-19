@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { registrations: "registrations", sessions: "sessions" }
+  devise_for :users, controllers: { registrations: "registrations", :passwords: "passwords", sessions: "sessions" }
   root 'places#index'
   
   resources :places do
