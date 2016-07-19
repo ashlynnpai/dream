@@ -7,22 +7,24 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
- <div class="container-fluid">
-    <header>
-      <nav class="navbar navbar-fixed-top" role="navigation">
-        <%= render 'layouts/navigation' %>
-      </nav>
-    </header>
-  </div> 
-<body>
-<% if notice.present? %>
-  <p class="alert alert-info"><%= notice %></p>
-<% end %>
-<% if alert.present? %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
+<div class="container-fluid">
+  <header>
+    <nav class="navbar navbar-fixed-top" role="navigation">
+      <%= render 'layouts/navigation' %>
+    </nav>
+  </header>
+</div> 
+<div class="container main">  
+  <body>
+  <% if notice.present? %>
+    <p class="alert alert-info"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert alert-danger"><%= alert %></p>
+  <% end %>
 
-<%= yield %>
+  <%= yield %>
 
-</body>
+  </body>
+  </div>  
 </html>
