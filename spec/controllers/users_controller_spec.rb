@@ -26,13 +26,12 @@ RSpec.describe UsersController, type: :controller do
     end
     
     context 'if the user is the current user' do
-      let(:user) { Fabricate(:user) }
+      let(:user) { Fabricate(:user, public_profile: false) }
       before do
         allow(controller).to receive(:authenticate_user!).and_return(true)
         allow(controller).to receive(:current_user).and_return(user)
       end
       it 'renders the show template' do
-        user = Fabricate(:user, public_profile: false)
         get :show, id: user.id
         expect(response).to render_template('show')
       end      
