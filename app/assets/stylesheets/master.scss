@@ -33,8 +33,8 @@ body {
 }
 
 .navbar {
-  //background: rgba(0, 0, 0, 0.1);
-  background-color: rgba(253,249,234,0.7);
+  background: rgba(0, 0, 0, 0.1);
+  //background-color: rgba(253,249,234,0.7);
 
 }
 
@@ -69,10 +69,52 @@ blockquote p {
 }
 
 .jumbotron {
-    background-image: url(apinz.jpg);
+    background-image: url(zhu_difeng.jpg);
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 450px;
+    height: 600px;
     margin: 0;
+}
+
+.slideshow {
+  img {
+    width: 700px;
+    display: block;
+    margin: 50px auto;
+  }
+}
+
+#info-header {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.navbar-nav > li > a {
+  padding-top:5px !important; padding-bottom:5px !important;
+}
+
+.navbar-brand {
+  color: #3c2639;
+  font-size: 24px;
+}
+
+.menu-items {
+  padding-right: 15px;
+}
+
+.menu-items a {
+  color: #3c2639;
+  font-size: 18px;
+}
+
+.search-box {
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+.user-forms {
+  margin-top: 200px;
 }
