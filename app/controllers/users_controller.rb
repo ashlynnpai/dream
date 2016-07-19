@@ -2,10 +2,11 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: :update
   
   def show
-    if User.find(params[:id]).public_profile?
-      @user = User.find(params[:id])
-    else
-      render text: "That member's profile is private", status: :forbidden
+    @user = User.find(params[:id])
+    if @user == current_user || @user.public_profile?
+      render :show
+    else 
+      render text: "Sorry, that member's profile is private.", status: :forbidden
     end     
   end
   

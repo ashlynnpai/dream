@@ -133,9 +133,10 @@
         <blockquote>
           <b><%= comment.rating %></b> -
             <%= comment.message %>
-          <small><%= comment.user.username %></small>
+          <small><%= link_to comment.user.username, user_path(comment.user) %></small>
         </blockquote> 
       </div>
   <% end %>
   </div> 
 </div>  
+
