@@ -1,9 +1,11 @@
-<%= link_to "Didn't find what you were looking for?", new_place_path %>
-<br />
-<% @results.each do |result| %>
-  <%= result.name %>
-  <%= result.address %>
-<% end %>
+<div class="container main">
+  <%= link_to "Didn't find what you were looking for?", new_place_path %>
+  <br />
+  <% @results.each do |result| %>
+    <%= result.name %>
+    <%= result.address %>
+  <% end %>
+</div>  
 
 <div class="clear"></div>
 

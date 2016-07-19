@@ -1,17 +1,19 @@
-<div class="col-xs-10 col-xs-offset-1">
-  <h1>My Bucket List</h1>
-  <h2>Want to Go</h2>  
-   <p><%= link_to 'Show Places Visited', completed_buckets_path %></p>
-</div>
-
-<% @buckets.each do |bucket| %>
-  <div class="booyah-box col-xs-10 col-xs-offset-1">
-    <%= bucket.place.name %>
-    <br />
-    <%= link_to 'I did it!', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>   
-    <%= link_to 'Remove from list', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+<div class="container main">
+  <div class="col-xs-10 col-xs-offset-1">
+    <h1>My Bucket List</h1>
+    <h2>Want to Go</h2>  
+     <p><%= link_to 'Show Places Visited', completed_buckets_path %></p>
   </div>
-<% end %>
+
+  <% @buckets.each do |bucket| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <%= bucket.place.name %>
+      <br />
+      <%= link_to 'I did it!', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>   
+      <%= link_to 'Remove from list', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+    </div>
+  <% end %>
+</div>  
  
 
 

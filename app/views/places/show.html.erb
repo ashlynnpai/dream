@@ -1,139 +1,141 @@
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  
-<div class="col-xs-4">  
-  <h1><%= @place.name %></h1>
-  <i><%= @place.address %></i>
-  <br/><br/>
-  <p><%= @place.rating %></p>
-  <p><%= @place.description %></p>
-</div>  
+<div class="container main">
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
 
-<style>
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  #map {
-    height: 300px;
-  }
-</style>
-  
-<div class="col-xs-8">  
-  <% if @place.latitude.present? && @place.longitude.present? %>
-  <script>
+  <div class="col-xs-4">  
+    <h1><%= @place.name %></h1>
+    <i><%= @place.address %></i>
+    <br/><br/>
+    <p><%= @place.rating %></p>
+    <p><%= @place.description %></p>
+  </div>  
 
-  function initMap() {
-    var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      height: 300px;
+    }
+  </style>
 
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: myLatLng
-    });
+  <div class="col-xs-8">  
+    <% if @place.latitude.present? && @place.longitude.present? %>
+    <script>
 
-    var marker = new google.maps.Marker({
-      position: myLatLng,
-      map: map,
-      title: 'Hello World!'
-    });
-  }
-</script>
-  
-  <div id="map"></div>
+    function initMap() {
+      var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
 
-  <% end %>
-</div>  
-  
-<script async defer
-   src="https://maps.googleapis.com/maps/api/js?key=
-    AIzaSyC__9rFHF6oY5IK7HsZ6mz4tVbeUKIbiis&callback=initMap">
-</script>
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 12,
+        center: myLatLng
+      });
 
-<br /> 
-<br />   
-  <div class="pull-left">
-    <% if current_user %> 
-      <% if current_user == @place.user || current_user.admin? %>  
-        <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
-      <% end %>
+      var marker = new google.maps.Marker({
+        position: myLatLng,
+        map: map,
+        title: 'Hello World!'
+      });
+    }
+  </script>
+
+    <div id="map"></div>
+
     <% end %>
   </div>  
-  <div class="pull-right">
-    <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
-      <%= link_to 'Add to my Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+
+  <script async defer
+     src="https://maps.googleapis.com/maps/api/js?key=
+      AIzaSyC__9rFHF6oY5IK7HsZ6mz4tVbeUKIbiis&callback=initMap">
+  </script>
+
+  <br /> 
+  <br />   
+    <div class="pull-left">
+      <% if current_user %> 
+        <% if current_user == @place.user || current_user.admin? %>  
+          <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
+    </div>  
+    <div class="pull-right">
+      <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
+        <%= link_to 'Add to my Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>  
+
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
+      <%= f.error_notification %>
+      <br />
+      <%= f.file_field :image %>
+      <br />
+      <%= f.input :caption %>
+      <%= f.input :owner %>
+      <%= f.input :copyright %>
+      <br />
+      <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
     <% end %>
   </div>
-</div>  
 
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-    <%= f.error_notification %>
-    <br />
-    <%= f.file_field :image %>
-    <br />
-    <%= f.input :caption %>
-    <%= f.input :owner %>
-    <%= f.input :copyright %>
-    <br />
-    <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-  <% end %>
-</div>
+  <div class="booyah-box col-xs-10 col-xs-offset-1">
+    <% @place.photos.each do |photo| %>
+      <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
+      <br />
+      <%= photo.caption if photo.caption? %>
+      <%= link_to 'See Photo', photo_path(photo) %>
+    <% end %>
+  </div>  
 
-<div class="booyah-box col-xs-10 col-xs-offset-1">
-  <% @place.photos.each do |photo| %>
-    <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
-    <br />
-    <%= photo.caption if photo.caption? %>
-    <%= link_to 'See Photo', photo_path(photo) %>
-  <% end %>
-</div>  
+  <div class="clear"></div>
 
-<div class="clear"></div>
-
-<% if current_user %>
-  <!-- Modal -->
-  <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="commentModalLabel">Add a comment</h4>
+  <% if current_user %>
+    <!-- Modal -->
+    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="commentModalLabel">Add a comment</h4>
+          </div>
+          <div class="modal-body">
+            <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
+              <%= f.input :rating %>
+              <%= f.input :message, label: "Your comment" %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+            </div>
+          <% end %>
         </div>
-        <div class="modal-body">
-          <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-            <%= f.input :rating %>
-            <%= f.input :message, label: "Your comment" %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
       </div>
     </div>
+
+    <div class="col-xs-10 col-xs-offset-1">
+      <!-- Button trigger modal -->
+      <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#commentModal">
+        Add a comment
+      </button>
   </div>
+  <% end %>
 
+  <div class="clear"></div>
+
+  <br />
   <div class="col-xs-10 col-xs-offset-1">
-    <!-- Button trigger modal -->
-    <button class="btn btn-primary btn-lg pull-right" data-toggle="modal" data-target="#commentModal">
-      Add a comment
-    </button>
-</div>
-<% end %>
+    <h1>Comments</h1>
 
-<div class="clear"></div>
-
-<br />
-<div class="col-xs-10 col-xs-offset-1">
-  <h1>Comments</h1>
-
-  <% @place.comments.each do |comment| %>
-    <div>
-      <blockquote>
-        <b><%= comment.rating %></b> -
-          <%= comment.message %>
-        <small><%= comment.user.username %></small>
-      </blockquote> 
-    </div>
-<% end %>
-</div> 
+    <% @place.comments.each do |comment| %>
+      <div>
+        <blockquote>
+          <b><%= comment.rating %></b> -
+            <%= comment.message %>
+          <small><%= comment.user.username %></small>
+        </blockquote> 
+      </div>
+  <% end %>
+  </div> 
+</div>  
