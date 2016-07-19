@@ -1,3 +1,31 @@
 <div class="container main">
-  <%= @user.username %>
+  <h1><%= @user.username %></h1>
+  <br />
+  
+  <h2>Bucket List</h2>
+  
+  <% @buckets.each do |bucket| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <%= bucket.place.name %>
+    </div>
+  <% end %>
+  
+  
+  <h2>Completed</h2>
+  
+  <% @completed_buckets.each do |bucket| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <%= bucket.place.name %>
+    </div>
+  <% end %>
+  
+  <h2>Comments</h2>
+  
+  <% @comments.each do |comment| %>
+    <div class="booyah-box col-xs-10 col-xs-offset-1">
+      <%= comment.place.name %>
+      <br />
+      <%= comment.message %>
+    </div>
+  <% end %>
 </div>  

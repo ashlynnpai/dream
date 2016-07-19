@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+    @buckets = @user.buckets.todo
+    @completed_buckets = @user.buckets.done
+    @comments = @user.comments
     if @user == current_user || @user.public_profile?
       render :show
     else 
