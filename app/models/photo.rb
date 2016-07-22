@@ -7,9 +7,9 @@ class Photo < ActiveRecord::Base
   
   validates :image, presence: true, 
                     file_size: { less_than: 10.megabytes,
-                                  message: 'file size must be less than 10 MB'},
+                                  message: 'File size must be less than 10 MB'},
                     file_content_type: { allow: ['image/jpeg', 'image/jpg', 'image/png'],
-                                  message: 'only jpeg and gif files can be uploaded'}
+                                  message: 'Only jpeg and gif files can be uploaded'}
 
   
 end

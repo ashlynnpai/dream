@@ -9,7 +9,12 @@ class PhotosController < ApplicationController
       redirect_to place_path(@place)
     else
       @photos = @place.photos.reload
-      redirect_to :back, alert: "Your photo was not uploaded"
+      if @photo.errors.full_messages.present?
+        flash[:alert] = @photo.errors.full_messages[0]
+      else 
+        flash[:alert] = "Your photo was not uploaded"
+      end  
+      redirect_to :back  
     end
   end
   
