@@ -23,4 +23,28 @@ RSpec.describe CommentsController, type: :controller do
       end
     end
   end
+  
+  describe 'PUT update' do
+    let(:place) { Fabricate(:place) }
+    
+    context "with the user's own review" do
+      let(:user) { Fabricate(:user) }
+      before do
+        allow(controller).to receive(:authenticate_user!).and_return(true)
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+    
+      it 'updates the review' do
+        comment = Fabricate(:comment, place_id: place.id, user_id: user.id, message: 'old')
+        put :update, id: comment.id, place_id: place.id, user_id: user.id, comment: { message: 'new' }
+        expect(comment.reload.message).to eq('new')    
+      end
+    end
+  end
 end
+
+
+
+  
+  
+  
