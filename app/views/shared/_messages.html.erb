@@ -1,0 +1,8 @@
+<div class="flash-messages">  
+  <% if notice.present? %>
+    <p class="alert alert-info" class="close" data-dismiss="alert" aria-label="close"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert alert-danger" class="close" data-dismiss="alert" aria-label="close"><%= alert %></p>
+  <% end %>
+</div>  
