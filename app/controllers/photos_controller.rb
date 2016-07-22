@@ -5,10 +5,10 @@ class PhotosController < ApplicationController
     @place = Place.find(params[:place_id])
     @photo = @place.photos.build(photo_params)   
     if @photo.save
-      flash[:success] = "Your photo was uploaded."
+      flash[:notice] = "Your photo was uploaded."
       redirect_to place_path(@place)
     else
-      flash[:error] = "Your photo was not uploaded."
+      flash[:alert] = "Your photo was not uploaded."
       @photos = @place.photos.reload
       redirect_to place_path(@place)
     end
