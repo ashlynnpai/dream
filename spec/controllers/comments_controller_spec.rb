@@ -40,6 +40,21 @@ RSpec.describe CommentsController, type: :controller do
         expect(comment.reload.message).to eq('new')    
       end
     end
+    
+    context "not with the user's own review" do
+      let(:user) { Fabricate(:user) }
+      before do
+        allow(controller).to receive(:authenticate_user!).and_return(true)
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+    
+      it 'does not update the review' do
+        creator = Fabricate(:user)
+        comment = Fabricate(:comment, place_id: place.id, user_id: creator.id, message: 'old')
+        put :update, id: comment.id, place_id: place.id, user_id: creator.id, comment: { message: 'new' }
+        expect(comment.reload.message).to eq('old')    
+      end
+    end
   end
 end
 
