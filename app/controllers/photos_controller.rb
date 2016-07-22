@@ -5,10 +5,12 @@ class PhotosController < ApplicationController
     @place = Place.find(params[:place_id])
     @photo = @place.photos.build(photo_params)   
     if @photo.save
+      flash[:success] = "Your photo was uploaded."
       redirect_to place_path(@place)
     else
+      flash[:error] = "Your photo was not uploaded."
       @photos = @place.photos.reload
-      render 'places/show'
+      redirect_to place_path(@place)
     end
   end
   
@@ -18,9 +20,10 @@ class PhotosController < ApplicationController
   
   def destroy
     @photo = Photo.find(params[:id])
+    @place = @photo.place
     return render text: 'Not Allowed', status: :forbidden unless @photo.user == current_user || current_user.admin?
     @photo.destroy
-    redirect_to dashboard_path
+    redirect_to place_path(@place)
   end
   
   private
