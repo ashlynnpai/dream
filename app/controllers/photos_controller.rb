@@ -3,8 +3,13 @@ class PhotosController < ApplicationController
   
   def create
     @place = Place.find(params[:place_id])
-    @place.photos.create(photo_params)   
-    redirect_to place_path(@place)
+    @photo = @place.photos.build(photo_params)   
+    if @photo.save
+      redirect_to place_path(@place)
+    else
+      @photos = @place.photos.reload
+      render 'places/show'
+    end
   end
   
   def show
