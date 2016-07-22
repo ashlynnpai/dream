@@ -8,9 +8,8 @@ class PhotosController < ApplicationController
       flash[:notice] = "Your photo was uploaded."
       redirect_to place_path(@place)
     else
-      flash[:alert] = "Your photo was not uploaded."
       @photos = @place.photos.reload
-      redirect_to place_path(@place)
+      redirect_to :back, alert: "Your photo was not uploaded"
     end
   end
   
