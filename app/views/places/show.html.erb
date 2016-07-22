@@ -81,10 +81,12 @@
 
   <div class="booyah-box col-xs-10 col-xs-offset-1">
     <% @place.photos.each do |photo| %>
-      <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
-      <br />
-      <%= photo.caption if photo.caption? %>
-      <%= link_to 'See Photo', photo_path(photo) %>
+      <% if photo.persisted? %>
+        <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
+        <br />
+        <%= photo.caption if photo.caption? %>
+        <%= link_to 'See Photo', photo_path(photo) %>
+      <% end %>
     <% end %>
   </div>  
   
@@ -100,14 +102,17 @@
             <h4 class="modal-title" id="photoModalLabel">Add a photo</h4>
           </div>
           <div class="modal-body">
-             <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-              <%= f.error_notification %>
-              <br />
-              <%= f.file_field :image %>
-              <br />
-              <%= f.input :caption %>
-              <%= f.input :owner %>
-              <%= f.input :copyright %>
+             <%= simple_form_for @place do |f| %>
+            
+              <%= f.simple_fields_for :photos, @photo do |p| %>
+                  <%= f.error_notification %>
+                  <br />
+                  <%= p.file_field :image %>
+                  <br />
+                  <%= p.input :caption %>
+                  <%= p.input :owner %>
+                  <%= p.input :copyright %>
+              <% end %>
               <br />
           </div>
             <div class="modal-footer">
