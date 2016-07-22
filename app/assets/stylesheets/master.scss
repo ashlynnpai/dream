@@ -126,3 +126,11 @@ blockquote p {
 .main {
   margin-top: 100px;
 }
+
+.close {
+   float: none;
+   margin: 0 auto;
+   opacity: 0.4;
+   filter: alpha(opacity=40);
+}
+
