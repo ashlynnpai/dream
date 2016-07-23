@@ -1,11 +1,11 @@
 .navbar {
+  background: #FAF9F4;
   background: rgba(0, 0, 0, 0.1);
-  //background-color: rgba(253,249,234,0.7);
 }
 
 .navbar-default .navbar-brand {
   //color: #5C5858;
-  font-family: 'sinkin_sans500_medium';
+  font-family: 'sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
   font-size:22px;
 }
 
@@ -17,7 +17,7 @@
 #navbar-brand {
   color: #3c2639;
   font-size: 18px;
-  font-family: 'kaushan_scriptregular';
+  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
 }
 
 .menu-items {
@@ -36,6 +36,11 @@
   margin-left: 50px;
 }
 
+.search-button {
+  background-color: #FAF9F4;
+  background-color: rgba(253,249,234,0.92);
+}
+
 .field_with_errors {
   color: #ff3333;
   background-color: #FFEEEE;
@@ -44,8 +49,8 @@
 }
 
 body {
-  font-family: 'montserratregular', 'sinkin_sans500_medium', serif;
-  //background-color: #FAF9F4;
+  font-family: 'montserratregular','sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
+  background-color: #FAF9F4;
   background-color: rgba(253,249,234,0.92);
   color: #3c2639;
 }
@@ -130,11 +135,11 @@ blockquote p {
 }
 
 #my-brand {
-  color: #FFF8DC;
   text-align: center;
   margin-top: 130px;
-  font-family: 'kaushan_scriptregular';
-  color: #FFFFF5;
+  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+  color: #FAF9F4;
+  color: rgba(253,249,234,0.92);
 }
 
 @media (max-width: 600px) {
