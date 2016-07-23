@@ -1,15 +1,5 @@
-<div class="container-fluid" >
-  
-  <div class="jumbotron" >
-  </div>  
-   
-   <h2 id="info-header">Create your own bucket list of dream places. Share it with others.</h2>
-  
-  <div class="row slideshow">
-    <%= image_tag 'apinz.jpg' %>
-  </div>
-  
-  
+<div class="container main">
+  <%= render 'shared/messages' %>   
   <% @places.each do |place| %>
     <div class="booyah-box col-xs-10 col-xs-offset-1">
       <h1><%= link_to place.name, place_path(place) %></h1><br />
@@ -20,6 +10,5 @@
     <hr />
   <% end %>
 
-
-<%= will_paginate @places, previous_label: h("<"), next_label: h(">") %>
+  <%= will_paginate @places, previous_label: h("<"), next_label: h(">") %>
 </div> 

@@ -10,16 +10,17 @@
       </button>
         <%= link_to 'Dream Places', root_path, class: 'navbar-brand' %>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <div class="form-group navbar-form" role="search">
        <%= form_tag search_places_path, :method => 'get' do %>
        <%= text_field_tag :q, nil, :class => 'search-box', :placeholder => 'Search Places' %>
        <%= submit_tag "Search", :class => 'btn' %>
        <% end %>
     </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right menu-items">
+        <li><%= link_to 'Browse', places_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to 'My Bucket List', bucketlist_path %></li>
           <li><%= link_to 'Dashboard', dashboard_path %></li>

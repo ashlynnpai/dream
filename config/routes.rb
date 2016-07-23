@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations", passwords: "passwords", sessions: "sessions" }
-  root 'places#index'
+  root 'statics#index'
   
   resources :places do
     resources :comments, only: [:create, :update]
