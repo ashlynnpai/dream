@@ -8,6 +8,14 @@
     <br/><br/>
     <p><%= @place.rating %></p>
     <p><%= @place.description %></p>
+    
+    <div class="pull-left">
+      <% if current_user %> 
+        <% if current_user == @place.user || current_user.admin? %>  
+          <%= link_to 'Edit Description', edit_place_path(@place) %>
+        <% end %>
+      <% end %>
+    </div>  
   </div>  
     
      <!-- Button trigger modal --> 
@@ -19,6 +27,11 @@
       Add a comment
     </button>
   </div>
+  <div class="pull-right">
+    <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
+      <%= link_to '+ Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+    <% end %>
+  </div>  
   <br />  
   <br /> 
   <br /> 
@@ -51,11 +64,9 @@
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC__9rFHF6oY5IK7HsZ6mz4tVbeUKIbiis&callback=initMap">
     </script>
-
-
-  </div>  
     
-
+   
+    
     <% else %>
     <script>
 
@@ -87,28 +98,15 @@
 
   <br /> 
   <br />   
-    <div class="pull-left">
-      <% if current_user %> 
-        <% if current_user == @place.user || current_user.admin? %>  
-          <%= link_to 'Edit Description', edit_place_path(@place), class: 'btn btn-primary' %>
-        <% end %>
-      <% end %>
-    </div>  
-    <div class="pull-right">
-      <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
-        <%= link_to 'Add to my Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
-      <% end %>
-    </div>
-  </div>  
 
-  <div class="booyah-box col-xs-10 col-xs-offset-1">
+ 
     <% @place.photos.each do |photo| %>
       <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
       <br />
       <%= photo.caption if photo.caption? %>
       <%= link_to 'See Photo', photo_path(photo) %>
     <% end %>
-  </div>  
+
   
   <div class="clear"></div>
 
@@ -169,6 +167,8 @@
   <div class="clear"></div>
 
   <br />
+    
+  </div>   
 
   <h1>Comments</h1>
 
@@ -209,7 +209,7 @@
       <% end %>
     <% end %>
     
-  </div> 
+
 </div>  
 
 
