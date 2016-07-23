@@ -17,10 +17,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 body {
-  /* Helvetica/Arial-based sans serif stack */
-  font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /* Subtle Patterns, Pink Rice by http://www.excogitoweb.it/ */
-  /* background: url('/assets/pink_rice.png'); */
+  font-family: 'montserratregular', 'sinkin_sans500_medium', serif;
   //background-color: #FAF9F4;
   background-color: rgba(253,249,234,0.92);
   color: #3c2639;
@@ -73,7 +70,7 @@ blockquote p {
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 450px;
+    height: 400px;
     margin: 0;
 }
 
@@ -96,7 +93,8 @@ blockquote p {
 
 .navbar-brand {
   color: #3c2639;
-  font-size: 24px;
+  font-size: 18px;
+  font-family: 'kaushan_scriptregular';
 }
 
 .menu-items {
@@ -105,11 +103,12 @@ blockquote p {
 
 .menu-items a {
   color: #3c2639;
-  font-size: 18px;
+  font-size: 16px;
 }
 
+
 .search-box {
-  width: 300px;
+  width: 250px;
   height: 35px;
   border-radius: 10px;
   margin-left: 50px;
@@ -134,3 +133,10 @@ blockquote p {
    filter: alpha(opacity=40);
 }
 
+#my-brand {
+  color: #FFF8DC;
+  text-align: center;
+  margin-top: 130px;
+  font-family: 'kaushan_scriptregular';
+  color: #FFFFF5;
+}
