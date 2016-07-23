@@ -159,7 +159,7 @@
           <small><%= link_to comment.user.username, user_path(comment.user) %></small>
         </blockquote> 
         <% if current_user == comment.user || current_user.admin? %>
-          <%= simple_form_for comment, url: place_comments_path(@place) do |f| %>
+          <%= simple_form_for comment, url: place_comment_path(@place, comment) do |f| %>
               <%= f.input :rating %>
               <%= f.input :message, label: "Your comment" %>
               <%= f.submit "Edit Comment", class: 'btn btn-primary' %>
