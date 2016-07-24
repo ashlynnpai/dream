@@ -1,3 +1,4 @@
+/* global */
 .navbar {
   background: #FAF9F4;
   background: rgba(0, 0, 0, 0.1);
@@ -18,6 +19,13 @@
   color: #3c2639;
   font-size: 18px;
   font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+}
+
+#my-brand {
+  margin-top: 130px;
+  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+  color: #FAF9F4;
+  color: rgba(253,249,234,0.92);
 }
 
 .menu-items {
@@ -41,11 +49,20 @@
   background-color: rgba(253,249,234,0.92);
 }
 
+/* messages */
+
 .field_with_errors {
   color: #ff3333;
   background-color: #FFEEEE;
   border-radius: 3px;
   padding:8px;
+}
+
+.close {
+ float: none;
+ margin: 0 auto;
+ opacity: 0.4;
+ filter: alpha(opacity=40);
 }
 
 body {
@@ -101,6 +118,39 @@ blockquote p {
   margin-top: 100px;
 }
 
+/* sticky footer http://timothylong.com/responsive-sticky-footer/*/
+
+html,
+body {
+  height: 100%;
+}
+
+.container {
+  display: table;
+  height: 100%;
+  width: 100%;
+}
+
+.block {
+  display: table-row;
+  height: 1px;
+}
+
+.block p {
+  color: #FAF9F4;
+  color: rgba(253,249,234,0.92);
+}
+
+.push {
+  height: auto;
+}
+
+.block:nth-child(odd) {
+  background: #3c2639;
+}
+
+/* landing page statics index */
+
 .jumbotron {
   background-image: url(zhu_difeng.jpg);
   background-position: 0% 25%;
@@ -114,7 +164,7 @@ blockquote p {
   img {
     width: 700px;
     display: block;
-    margin: 50px auto;
+    margin: 100px auto;
   }
 }
 
@@ -122,23 +172,15 @@ blockquote p {
   text-align: center;
 }
 
+/* forms */
+
 .user-forms {
   margin-top: 100px;
 }
 
-.close {
- float: none;
- margin: 0 auto;
- opacity: 0.4;
- filter: alpha(opacity=40);
-}
 
-#my-brand {
-  margin-top: 130px;
-  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
-  color: #FAF9F4;
-  color: rgba(253,249,234,0.92);
-}
+
+
 
 @media (max-width: 600px) {
   .search-box {
