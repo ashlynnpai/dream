@@ -151,7 +151,7 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-              <%= f.input :rating %>
+              <%= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'], [3, '3'], [4, '4'], [5, '5']], :first, :last %>
               <%= f.input :message, label: "Your comment" %>
           </div>
             <div class="modal-footer">
@@ -190,7 +190,7 @@
               </div>
               <div class="modal-body">
                   <%= simple_form_for comment, url: place_comment_path(@place, comment) do |f| %>
-                  <%= f.input :rating %>
+                  <%= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'], [3, '3'], [4, '4'], [5, '5']], :first, :last %>
                   <%= f.input :message, label: "Your comment" %>
               </div>
               <div class="modal-footer">
