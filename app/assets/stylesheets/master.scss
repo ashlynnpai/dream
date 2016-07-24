@@ -194,8 +194,16 @@ body {
   margin-top: 100px;
 }
 
+/* places show */
+
+.place-photos {
+  margin-top: 50px;
+  background: blue;
+  padding: 30px;
+}
 
 
+/* responsive */
 @media (max-width: 600px) {
   .search-box {
     width: 180px;

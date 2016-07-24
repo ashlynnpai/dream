@@ -1,8 +1,8 @@
-<div class="col-xs-6 col-xs-offset-3">  
+<div class="row">  
   <% if notice.present? %>
-    <p class="alert alert-info close" data-dismiss="alert" aria-label="close"><%= notice %></p>
+    <a href="#" class="alert alert-info close" data-dismiss="alert" aria-label="close"><%= notice %> &times; </a>
   <% end %>
   <% if alert.present? %>
-    <p class="alert alert-danger close" data-dismiss="alert" aria-label="close"><%= alert %></p>
+    <a href="#" class="alert alert-info close" data-dismiss="alert" aria-label="close"><%= notice %> &times; </a>
   <% end %>
 </div>  
