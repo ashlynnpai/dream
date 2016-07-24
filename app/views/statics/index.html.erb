@@ -21,11 +21,37 @@
   <div class="row slideshow">
     <%= image_tag 'apinz.jpg' %>
   </div>
-  <section class="container">
+  <section class="footer-container">
     <footer class="block">
       <div class="col-xs-4">
-        <p>Attribution</p>
+        <p><a href="#" data-toggle="modal" 
+        data-target="#attributionModal">Attributions</a></p>
       </div>  
     </footer>
   </section>
+  
+    <div class="modal fade" id="attributionModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title" id="myModalLabel">Attributions</h4>
+          </div>
+          <div class="modal-body">
+            <h4>Photo Attributions</h4>
+            <br />
+            <p>Photos on landing page used under license from Fotolia.</p>
+            <p>sky,mountains and landscape of Guilin &copy; zhu difeng</p>
+            <p>Vernazza in Cinque Terre, Liguria, Italy, on sunset &copy; Boris Stroujko</p>
+            <p>Venice in the evening &copy; Givaga</p>
+            <p>Pura Ulun Danu Bratan at Bali, Indonesia &copy; zephyr_p</p>
+            <p>Silhouette di giraffe &copy; apinz</p>
+            <p>&copy; </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+    </div>
+  </div>
 </div>  

@@ -125,7 +125,7 @@ body {
   height: 100%;
 }
 
-.container {
+.footer-container {
   display: table;
   height: 100%;
   width: 100%;
@@ -141,12 +141,28 @@ body {
   color: rgba(253,249,234,0.92);
 }
 
+.block p a {
+  color: #FAF9F4;
+  color: rgba(253,249,234,0.92);
+}
+
 .push {
   height: auto;
 }
 
 .block:nth-child(odd) {
   background: #3c2639;
+}
+
+/* footer content */
+
+#attributionModal {
+  text-align: left;
+  font-family: 'sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
+}
+
+#attributionModal p {
+  font-size: 12px;
 }
 
 /* landing page statics index */
@@ -162,7 +178,7 @@ body {
 
 .slideshow {
   img {
-    width: 700px;
+    width: 600px;
     display: block;
     margin: 100px auto;
   }
@@ -177,8 +193,6 @@ body {
 .user-forms {
   margin-top: 100px;
 }
-
-
 
 
 
