@@ -1,10 +1,17 @@
-Gallery
+<div class="container main">
+  <%= render 'shared/messages' %>
+
+  <h2>Gallery for <%= @place.name %></h2>
 
 <% @place.photos.each do |photo| %>
-      <div class="col-xs-4"> 
-        <%= image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill") if photo.image? %>
-        <br />
-        <%= photo.caption if photo.caption? %>
-        <%= link_to 'See Photo', photo_path(photo) %>
-      </div>  
-    <% end %>
+  <div class="col-xs-4"> 
+  <%= image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill") if photo.image? %>
+  <br />
+  <%= photo.caption if photo.caption? %>
+  <%= link_to 'See Photo', photo_path(photo) %>
+  </div>  
+<% end %>
+  
+</div>    
+  
+  
