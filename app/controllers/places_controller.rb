@@ -42,10 +42,6 @@ class PlacesController < ApplicationController
     end
   end
   
-  def gallery(place)
-    @place = place
-  end
-  
   def search
     @results = Place.kinda_spelled_like(params[:q])
     @place = Place.new
