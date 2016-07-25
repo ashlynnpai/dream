@@ -17,7 +17,7 @@ feature "Sign in" do
     fill_in 'Email', :with => user1.email
     fill_in 'Password', :with => "wrong"
     click_button 'Sign in'
-    expect(page).to have_content "Invalid Email or password."
+    expect(page).to have_content "Forgot your password?"
   end
   
 end
