@@ -21,9 +21,10 @@ Rails.application.routes.draw do
   resources :buckets, only: [:update, :destroy]  
   resources :completed_buckets, only: [:index, :destroy]
   
+  get "/places/:place_id/photos", to: "galleries#index", as: "galleries"
+  
   resources :photos, only: [:show, :destroy]
   
- 
   
   get 'bucketlist', to: 'buckets#index'
   post 'bucketlist', to: 'buckets#create'

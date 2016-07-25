@@ -13,6 +13,10 @@ class Place < ActiveRecord::Base
   validates :address, presence: true
   validates :description, presence: true
   
+  def gallery
+    photos
+  end
+  
   def rating
     comments.average(:rating) if comments.average(:rating)
   end
