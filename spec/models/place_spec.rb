@@ -8,8 +8,9 @@ RSpec.describe Place, type: :model do
   it { should validate_presence_of(:description) }
   
   describe '#rating' do
+    let(:place_creator) { Fabricate(:user) }
+    let(:place) { Fabricate(:place, user: place_creator) }
     it 'returns the average rating if there are ratings present' do
-      place = Fabricate(:place)
       user = Fabricate(:user)
       comment1 = Fabricate(:comment, user: user, place: place, rating: 1)
       comment2 = Fabricate(:comment, user: user, place: place, rating: 5)
@@ -17,7 +18,6 @@ RSpec.describe Place, type: :model do
     end
     
     it 'returns nil if there are no ratings present' do
-      place = Fabricate(:place)
       user = Fabricate(:user)
       comment1 = Fabricate(:comment, user: user, place: place, rating: nil)
       expect(place.rating).to eq(nil) 
