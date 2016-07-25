@@ -10,6 +10,10 @@ class Photo < ActiveRecord::Base
                                   message: 'File size must be less than 10 MB'},
                     file_content_type: { allow: ['image/jpeg', 'image/jpg', 'image/png'],
                                   message: 'Only jpeg and gif files can be uploaded'}
+  
+  def self.last_three_photos(place)
+    place.photos.last(3)
+  end
 
   
 end
