@@ -154,7 +154,7 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-              <%= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'], [3, '3'], [4, '4'], [5, '5']], :first, :last %>
+              <%= f.collection_radio_buttons :rating, [[1, image_tag('star-empty.png')] ,[2, image_tag('star-empty.png')], [3, image_tag('star-empty.png')], [4, image_tag('star-empty.png')], [5, image_tag('star-empty.png')]], :first, :last %>
               <%= f.input :message, label: "Your comment" %>
           </div>
             <div class="modal-footer">
@@ -194,7 +194,7 @@
                 </div>
                 <div class="modal-body">
                     <%= simple_form_for comment, url: place_comment_path(@place, comment) do |f| %>
-                    <%= f.collection_radio_buttons :rating, [[1, '1'] ,[2, '2'], [3, '3'], [4, '4'], [5, '5']], :first, :last %>
+                    <%= f.collection_radio_buttons :rating, [[1, image_tag('star-empty.png')] ,[2, image_tag('star-empty.png')], [3, image_tag('star-empty.png')], [4, image_tag('star-empty.png')], [5, image_tag('star-empty.png')]], :first, :last %>
                     <%= f.input :message, label: "Your comment" %>
                 </div>
                 <div class="modal-footer">
