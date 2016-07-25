@@ -6,8 +6,8 @@ class Comment < ActiveRecord::Base
   validates :message, presence: true
   
   def send_comment_email
-    #if user.notify_on_comment == true
-      NotificationMailer.comment_added(self).deliver
-    #end
+    if place.user.notify_on_comment == true
+      NotificationMailer.comment_added(self).deliver_now
+    end
   end
 end
