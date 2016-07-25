@@ -28,5 +28,5 @@ end
 private
 
 def user_params
-  params.require(:user).permit(:public_profile)
+  params.require(:user).permit(:public_profile, :notify_on_comment)
 end

@@ -1,20 +1,40 @@
 <div class="container main">
   <%= render 'shared/messages' %>
   <div class="col-xs-10 col-xs-offset-1">
-    <p>Hello <%= @user.username %></p>
-    <p>You can search for a place or browse for new places (link) and add them to your bucket list. If your place doesn't exist, you can create one.</p>
+    <h3>Hello <%= @user.username %></h3>
+    <h5>You can search for a place or browse for new places (link) and add them to your bucket list. If your place doesn't exist, you can create one.</h5>
 
+    <h3>Privacy</h3>
     <div class="booyah-box">
+      <h4>Change profile privacy settings</h4>
       <% if @user.public_profile? %>
-        <p>Your profile is public</p>
+        <h5>Your profile is public</h5>
       <% else %>
-        <p>Your profile is private</p>
+        <h5>Your profile is private</h5>
       <% end %>
-
-      <h3>Change profile privacy settings</h3>
+      
       <br />
       <%= simple_form_for @user do |f| %>
         <%= f.collection_radio_buttons :public_profile, [[true, 'Public'] ,[false, 'Private']], :first, :last %>
+        <br />
+        <br />
+        <%= f.button :submit %>
+      <% end %>
+    </div>  
+    
+    <h3>Notifications</h3>
+    
+    <div class="booyah-box">
+      <h4>Change comment notification settings</h4>
+      <% if @user.notify_on_comment? %>
+        <h5>An email will be sent to you if someone comments on a place you created.</h5>
+      <% else %>
+        <h5>An email will be NOT sent to you if someone comments on a place you created.</h5>
+      <% end %>
+
+      <br />
+      <%= simple_form_for @user do |f| %>
+        <%= f.collection_radio_buttons :notify_on_comment, [[true, 'Yes, send me an email'] ,[false, 'No, do not email me']], :first, :last %>
         <br />
         <br />
         <%= f.button :submit %>
