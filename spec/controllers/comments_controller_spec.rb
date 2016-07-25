@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe CommentsController, type: :controller do
   
   describe 'POST create' do
-    let(:place) { Fabricate(:place) }
+    let(:place_creator) { Fabricate(:user) }
+    let(:place) { Fabricate(:place, user: place_creator) }
      
     context 'with authenticated users' do
       let(:user) { Fabricate(:user) }
@@ -25,7 +26,8 @@ RSpec.describe CommentsController, type: :controller do
   end
   
   describe 'PUT update' do
-    let(:place) { Fabricate(:place) }
+    let(:place_creator) { Fabricate(:user) }
+    let(:place) { Fabricate(:place, user: place_creator) }
     
     context "with the user's own review" do
       let(:user) { Fabricate(:user) }
