@@ -103,10 +103,12 @@
 
   <div class="row place-photos">
     <% @place.photos.last_three_photos(@place).each do |photo| %>
-      <%= image_tag(photo.image_url, :width=>250, :height=>250, :crop=>"fill") if photo.image? %>
-      <br />
-      <%= photo.caption if photo.caption? %>
-      <%= link_to 'See Photo', photo_path(photo) %>
+      <div class="col-xs-4"> 
+        <%= image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill") if photo.image? %>
+        <br />
+        <%= photo.caption if photo.caption? %>
+        <%= link_to 'See Photo', photo_path(photo) %>
+      </div>  
     <% end %>
   </div>  
 
