@@ -8,9 +8,9 @@
 
       <div class="form-inputs">
         <br />
-        <%= f.input :username, required: true, hint: ("Your username will be displayed publicly") %>
+        <%= f.input :username, required: true, label: ("Username will be displayed publicly") %>
         <%= f.input :email, required: true, autofocus: true %>
-        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
+        <%= f.input :password, required: true %>
         <%= f.input :password_confirmation, required: true %>
         <br />
       </div>
