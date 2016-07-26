@@ -1,20 +1,32 @@
 <div class="container main">
   <%= render 'shared/messages' %>
   <div class="col-xs-10 col-xs-offset-1">
-    <h1>My Bucket List</h1>
-    <h2>Want to Go</h2>  
-     <p><%= link_to 'Show Places Visited', completed_buckets_path %></p>
+    <h2>My Bucket List</h3>
+    
+    <h4><%= link_to 'Go To Items Completed', completed_buckets_path, class: 'pull-right' %></h4>
   </div>
 
   <% @buckets.each do |bucket| %>
     <div class="booyah-box col-xs-10 col-xs-offset-1">
-      <%= bucket.place.name %>
+      <h3><%= bucket.place.name %></h3>
       <br />
-      <%= link_to 'I did it!', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>   
-      <%= link_to 'Remove from list', bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+      <p><%= bucket.place.address %></p>
+      <br />
+      <div class="pull-left">
+        <%= link_to image_tag('check.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>  
+          <br />
+          <p>I did it!</p>  
+      </div>  
+      <div class="pull-right">
+        <%= link_to image_tag('bucket_delete.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+        <br />
+        <p>Remove</p>  
+      </div>  
     </div>
   <% end %>
 </div>  
+
+
  
 
 
