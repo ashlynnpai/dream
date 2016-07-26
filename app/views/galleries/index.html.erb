@@ -1,17 +1,20 @@
 <div class="container main">
   <%= render 'shared/messages' %>
 
-  <h2>Gallery for <%= @place.name %></h2>
+  <h2>Gallery for <%= link_to @place.name, place_path(@place) %></h2>
 
-<% @place.photos.each do |photo| %>
-  <div class="col-xs-4"> 
-  <%= image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill") if photo.image? %>
   <br />
-  <%= photo.caption if photo.caption? %>
-  <%= link_to 'See Photo', photo_path(photo) %>
-  </div>  
-<% end %>
-  
+  <br />
+
+    <% @place.photos.each do |photo| %>
+      <div class="col-xs-3"> 
+      <%= image_tag(photo.image_url, :width=>240, :height=>240, :crop=>"fill") if photo.image? %>
+      <br />
+      <h4 class='photo-caption'><%= photo.caption if photo.caption? %></h4>
+      <%= link_to 'See Photo', photo_path(photo) %>
+      </div>  
+    <% end %> 
+
 </div>    
   
   
