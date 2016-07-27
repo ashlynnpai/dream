@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
+  obfuscate_id :spin => 7538204
+  
   validates :username, presence: true,  uniqueness: { case_sensitive: false }
   
   has_many :places
