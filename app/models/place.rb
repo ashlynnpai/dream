@@ -2,8 +2,8 @@ class Place < ActiveRecord::Base
   include PgSearch
   
   belongs_to :user
-  has_many :comments
-  has_many :photos
+  has_many :comments, dependent: :destroy
+  has_many :photos, dependent: :destroy
   has_many :buckets
   
   geocoded_by :address
