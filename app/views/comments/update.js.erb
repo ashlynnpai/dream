@@ -1,0 +1,6 @@
+<% if @comment.persisted? %>
+  $('#comment-display').append('<%= j render @comment %>');
+  $('#commentModal').modal('hide');
+<% else %>
+  $("#commentForm").html("<%= j render(partial: 'comments/form') %>");
+<% end %>

@@ -33,6 +33,10 @@ class CommentsController < ApplicationController
     if @comment.valid?
       flash[:notice] = "Your comment has been updated."
       redirect_to place_path(@place)
+#       respond_to do |format| 
+#         format.html { redirect_to place_path(@place) }
+#         format.js
+#      end
     else
       @comments = @place.comments.reload
       if @comment.errors.full_messages.present?
@@ -40,7 +44,11 @@ class CommentsController < ApplicationController
       else
         flash[:alert] = "Your comment did not update"
       end
-      redirect_to :back
+      #redirect_to :back
+#       respond_to do |format| 
+#         format.html { redirect_to :back }
+#         format.js
+#      end
     end
   end
   
