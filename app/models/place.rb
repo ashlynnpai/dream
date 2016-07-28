@@ -11,7 +11,12 @@ class Place < ActiveRecord::Base
   
   validates :name, presence: true, length: { minimum: 3 }
   validates :address, presence: true
-  validates :description, presence: true
+  
+  def geocode
+    if latitude.blank? && longitude.blank?
+      super
+    end
+  end
   
   def rating
     comments.average(:rating) if comments.average(:rating)
