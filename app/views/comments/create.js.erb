@@ -1,5 +1,6 @@
 <% if @comment.persisted? %>
   //close modal and append comment
+  alert("put something here")
 
 <% else %>
   $("#commentForm").html("<%= j render(partial: 'comments/form') %>");
