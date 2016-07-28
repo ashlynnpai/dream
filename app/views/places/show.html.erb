@@ -120,33 +120,8 @@
   <div class="clear"></div>
 
   <% if current_user %>
-    <!-- Modal -->
-    <div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="photoModalLabel">Add a photo</h4>
-          </div>
-          <div class="modal-body">
-             <%= simple_form_for @photo, url: place_photos_path(@place) do |f| %>
-              <%= f.error_notification %>
-              <br />
-              <%= f.file_field :image %>
-              <br />
-              <%= f.input :caption %>
-              <%= f.input :owner %>
-              <%= f.input :copyright %>
-              <br />
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <!-- Photo Create Modal -->
+     <%= render partial: "photos/form_create" %>
   <% end %>
 
   <% if current_user %>
