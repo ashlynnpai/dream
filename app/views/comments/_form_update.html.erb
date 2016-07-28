@@ -1,0 +1,24 @@
+<div class="modal fade" id="commentUpdate<%= comment.id %>Modal" tabindex="-1" role="dialog" aria-labelledby="commentUpdate<%= comment.id %>Modal" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <h4 class="modal-title" id="commentUpdate<%= comment.id %>Modal">Add a comment</h4>
+                </div>
+                <div class="modal-body">
+                    <%= simple_form_for comment, url: place_comment_path(@place, comment) do |f| %>
+                    <%= f.collection_radio_buttons :rating, [[1, image_tag('star-empty.png')] ,[2, image_tag('star-empty.png')], [3, image_tag('star-empty.png')], [4, image_tag('star-empty.png')], [5, image_tag('star-empty.png')]], :first, :last %>
+                    <%= f.input :message, label: "Your comment" %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <%= f.submit "Edit Comment", class: 'btn btn-primary' %>
+                </div>
+                <% end %>  
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>      
+        <button class="btn btn-primary pull-left" data-toggle="modal" data-target="#commentUpdate<%= comment.id %>Modal">
+          Edit Comment
+        </button> 
