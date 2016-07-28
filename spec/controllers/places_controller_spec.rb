@@ -130,12 +130,6 @@ describe PlacesController, type: :controller do
         put :update, {id: place.id, place: { name: 'new name' }}
         expect(place.reload.name).to eq('old name')
       end
-      
-     it 'renders the edit template' do
-        place = Fabricate(:place, description: 'old description', user_id: user.id)
-        put :update, {id: place.id, place: { description: nil }}
-        expect(response).to render_template('edit')
-      end
     end
   end
 end  
