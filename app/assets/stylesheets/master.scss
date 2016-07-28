@@ -44,9 +44,15 @@
   margin-left: 50px;
 }
 
-.search-button {
+.button-normal {
   background-color: #FAF9F4;
   background-color: rgba(253,249,234,0.92);
+  color: #3c2639;
+  margin: 0 10px;
+}
+
+.button-normal:hover {
+  background-color: #E0D6A5;
 }
 
 /* messages */

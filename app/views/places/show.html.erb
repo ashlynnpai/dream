@@ -20,16 +20,16 @@
     
      <!-- Button trigger modal --> 
     <div class="btn-group">
-      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#photoModal">
+      <button class="btn pull-right button-normal" data-toggle="modal" data-target="#photoModal">
         Add a photo
       </button>
-      <button class="btn btn-primary pull-right" data-toggle="modal" data-target="#commentModal">
+      <button class="btn pull-right button-normal" data-toggle="modal" data-target="#commentModal">
         Add a comment
       </button>
     </div>
     <div class="pull-right">
       <% if current_user && !(current_user.buckets.map(&:place).include?(@place)) %>
-        <%= link_to '+ Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn btn-primary' %>
+        <%= link_to '+ Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn button-normal' %>
       <% end %>
     </div>  
     <br />  
