@@ -34,71 +34,10 @@
     </div>  
     <br />  
     <br /> 
+    <br />     
+    <%= render partial: "places/map" %>
     <br /> 
-
-    <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      #map {
-        height: 300px;
-      }
-    </style>
-
-    <div class="col-xs-8">  
-      <% if !(@place.latitude.present? && @place.longitude.present?) %>
-
-      <script>
-        function initMap() {
-          var mapDiv = document.getElementById('map');
-          var map = new google.maps.Map(mapDiv, {
-              center: {lat: 35.6892, lng: 51.3890},
-              zoom: 2
-          });
-        }
-      </script>
-
-      <div id="map"></div>
-      <script async defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC__9rFHF6oY5IK7HsZ6mz4tVbeUKIbiis&callback=initMap">
-      </script>
-
-
-
-      <% else %>
-      <script>
-
-      function initMap() {
-        var myLatLng = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: myLatLng
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World!'
-        });
-      }
-    </script>
-
-      <div id="map"></div>
-
-      <% end %>
-    </div>  
-
-  <script async defer
-     src="https://maps.googleapis.com/maps/api/js?key=
-      AIzaSyC__9rFHF6oY5IK7HsZ6mz4tVbeUKIbiis&callback=initMap">
-  </script>
-
-  <br /> 
-  <br /> 
-    
+    <br /> 
   </div>  
 
   <% if @place.photos.any? %>
