@@ -124,23 +124,11 @@ describe PlacesController, type: :controller do
       end
     end
     
-    context 'with invalid input' do
-      it 'does not update a nil field' do
-        place = Fabricate(:place, description: 'old description', user_id: user.id)
-        put :update, {id: place.id, place: { description: nil }}
-        expect(place.reload.description).to eq('old description')
-      end
-      
+    context 'with invalid input' do      
       it 'does not update a locked attribute' do
         place = Fabricate(:place, name: 'old name', user_id: user.id)
         put :update, {id: place.id, place: { name: 'new name' }}
         expect(place.reload.name).to eq('old name')
-      end
-      
-     it 'renders the edit template' do
-        place = Fabricate(:place, description: 'old description', user_id: user.id)
-        put :update, {id: place.id, place: { description: nil }}
-        expect(response).to render_template('edit')
       end
     end
   end
