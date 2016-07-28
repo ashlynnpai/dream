@@ -5,7 +5,6 @@ RSpec.describe Place, type: :model do
   
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:address) }
-  it { should validate_presence_of(:description) }
   
   describe '#rating' do
     let(:place_creator) { Fabricate(:user) }
