@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
       else
         flash[:alert] = "Your comment did not update"
       end
-      #redirect_to :back
+      redirect_to :back
 #       respond_to do |format| 
 #         format.html { redirect_to :back }
 #         format.js
