@@ -150,27 +150,8 @@
   <% end %>
 
   <% if current_user %>
-    <!-- Modal -->
-    <div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h4 class="modal-title" id="commentModalLabel">Add a comment</h4>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for @comment, url: place_comments_path(@place) do |f| %>
-              <%= f.collection_radio_buttons :rating, [[1, image_tag('star-empty.png')] ,[2, image_tag('star-empty.png')], [3, image_tag('star-empty.png')], [4, image_tag('star-empty.png')], [5, image_tag('star-empty.png')]], :first, :last %>
-              <%= f.input :message, label: "Your comment" %>
-          </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <!-- Comment Create Modal -->
+    <%= render partial: "comments/form_create" %>
   <% end %>
 
   <div class="clear"></div>
