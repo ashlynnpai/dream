@@ -4,7 +4,7 @@
     <%= f.input :message, label: "Your comment" %>
 </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-    <%= f.submit "Add a Comment", class: 'btn btn-primary' %>
+    <button type="button" data-dismiss="modal">Close</button>
+    <%= f.submit "Add a Comment", class: 'btn btn-primary', id: 'comment-create-button' %>
   </div>
 <% end %>
