@@ -2,11 +2,14 @@
   <%= render 'shared/messages' %>
   <div class="col-xs-10 col-xs-offset-1">
     <h3>Hello <%= @user.username %></h3>
+    <br />
     <h5>You can search for a place or browse for new places (link) and add them to your bucket list. If your place doesn't exist, you can create one.</h5>
+    <br />
 
     <h3>Privacy</h3>
     <div class="booyah-box">
       <h4>Change profile privacy settings</h4>
+      <br />
       <% if @user.public_profile? %>
         <h5>Your profile is public</h5>
       <% else %>
@@ -18,7 +21,7 @@
         <%= f.collection_radio_buttons :public_profile, [[true, 'Public'] ,[false, 'Private']], :first, :last %>
         <br />
         <br />
-        <%= f.button :submit %>
+        <%= f.button :submit, class: 'button-opposite' %>
       <% end %>
     </div>  
     
@@ -26,6 +29,7 @@
     
     <div class="booyah-box">
       <h4>Change comment notification settings</h4>
+      <br />
       <% if @user.notify_on_comment? %>
         <h5>An email will be sent to you if someone comments on a place you created.</h5>
       <% else %>
@@ -37,7 +41,7 @@
         <%= f.collection_radio_buttons :notify_on_comment, [[true, 'Yes, send me an email'] ,[false, 'No, do not email me']], :first, :last %>
         <br />
         <br />
-        <%= f.button :submit %>
+        <%= f.button :submit, class: 'button-opposite' %>
       <% end %>
     </div>  
   </div>
