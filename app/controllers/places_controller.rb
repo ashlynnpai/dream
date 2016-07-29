@@ -13,7 +13,7 @@ class PlacesController < ApplicationController
   def create
     @place = current_user.places.create(place_params)
     if @place.valid?
-      redirect_to root_path
+      redirect_to place_path(@place)
     else
       render :search, status: :unprocessable_entity
     end
@@ -36,7 +36,7 @@ class PlacesController < ApplicationController
     return render text: 'Not Allowed', status: :forbidden unless @place.user == current_user || current_user.admin?
     @place.update_attributes(place_params)
     if @place.valid?
-      redirect_to root_path
+      redirect_to place_path(@place)
     else
       render :edit, status: :unprocessable_entity
     end
