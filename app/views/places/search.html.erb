@@ -4,6 +4,11 @@
   <h4>Didn't find what you were looking for?</h4> 
   <br />
   
+  <% if !(user_signed_in?) %>
+    <h4><%= link_to 'Sign in to add a place', new_user_session_path %></h4>
+    <br />
+  <% end %>
+  
   <% if false %>    
     <% if !(user_signed_in?) %>
       <!-- Sign in Modal -->
