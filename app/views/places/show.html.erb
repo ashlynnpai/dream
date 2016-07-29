@@ -44,17 +44,21 @@
     <div class="row place-photos">
       <% @place.photos.last_three_photos(@place).each do |photo| %>
         <div class="col-xs-4"> 
-          <%= image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill") if photo.image? %>
-          <br />
-          <%= photo.caption if photo.caption? %>
-          <%= link_to 'See Photo', photo_path(photo) %>
+          <div id="mycarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item active">
+                <%= link_to image_tag(photo.image_url, :width=>320, :height=>300, :crop=>"fill"), photo_path(photo) if photo.image? %>
+              <div class="carousel-caption">
+                <%= photo.caption if photo.caption? %>
+              </div>
+            </div>
+          </div>
+         </div>
         </div>  
-      <% end %>
-    </div>  
-
+       <% end %>
+      </div>
     <%= link_to 'See All Photos', galleries_path(place_id: @place.id) %>
   <% end %>
-
   
   <div class="clear"></div>
 

@@ -220,6 +220,15 @@ body {
   padding: 30px;
 }
 
+.carousel-caption {
+  background: rgba(0, 0, 0, 0.3);
+  bottom: 0;
+}
+
+.carousel-inner > .item > a > img:hover {
+  border:10px solid #d9cd92;
+}
+
 /* gallery */
 
 .photo-caption {

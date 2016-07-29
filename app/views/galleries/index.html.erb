@@ -8,13 +8,13 @@
 
     <% @place.photos.each do |photo| %>
       <div class="col-xs-3"> 
-      <%= image_tag(photo.image_url, :width=>240, :height=>240, :crop=>"fill") if photo.image? %>
+      <%= link_to image_tag(photo.image_url, :width=>240, :height=>240, :crop=>"fill"), photo_path(photo) if photo.image? %>
       <br />
       <h4 class='photo-caption'><%= photo.caption if photo.caption? %></h4>
-      <%= link_to 'See Photo', photo_path(photo) %>
       </div>  
     <% end %> 
 
 </div>    
   
+
   
