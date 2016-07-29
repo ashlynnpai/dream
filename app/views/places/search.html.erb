@@ -3,10 +3,23 @@
   <br />
   <h4>Didn't find what you were looking for?</h4> 
   <br />
-    <!-- Place Create Modal -->
-     <%= render partial: "places/form_create" %>
+  
+  <% if false %>    
+    <% if !(user_signed_in?) %>
+      <!-- Sign in Modal -->
+      <%= render partial: "devise/sessions/sign_in" %>
+       <!-- Sign in button trigger modal -->
+      <button class="btn button-opposite pull-left" data-toggle="modal" data-target="#sessionModal">
+        Sign In
+      </button>
+      <div class="clear"></div>
+    <% end %>
+  <% end %>
+  
+   <!-- Place Create Modal -->
+   <%= render partial: "places/form_create" %>
 
-    <!-- Button trigger modal -->
+  <!-- Place create button trigger modal -->
     <button class="btn button-opposite pull-left" data-toggle="modal" data-target="#placeModal">
       Add a place
     </button>
