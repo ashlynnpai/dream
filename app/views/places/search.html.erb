@@ -4,8 +4,18 @@
   <h4>Didn't find what you were looking for?</h4> 
   <br />
   
-  <% if !(user_signed_in?) %>
-    <h4><%= link_to 'Sign in to add a place', new_user_session_path %></h4>
+  <% if user_signed_in? %>
+     <!-- Place Create Modal -->
+     <%= render partial: "places/form_create" %>
+
+    <!-- Place create button trigger modal -->
+    <button class="btn button-opposite pull-left" data-toggle="modal" data-target="#placeModal">
+      Add a place
+    </button>
+  
+  <div class="clear"></div>
+  <% else %>
+    <h4><%= link_to 'Sign in', new_user_session_path %> to add a place</h4>
     <br />
   <% end %>
   
@@ -21,15 +31,7 @@
     <% end %>
   <% end %>
   
-   <!-- Place Create Modal -->
-   <%= render partial: "places/form_create" %>
 
-  <!-- Place create button trigger modal -->
-    <button class="btn button-opposite pull-left" data-toggle="modal" data-target="#placeModal">
-      Add a place
-    </button>
-
-  <div class="clear"></div>
   <br />
   <br />
   <br />

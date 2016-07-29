@@ -1,91 +1,4 @@
 /* global */
-.navbar {
-  background: #FAF9F4;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.navbar-default .navbar-brand {
-  //color: #5C5858;
-  font-family: 'sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
-  font-size:22px;
-}
-
-
-.navbar-nav > li > a {
-  padding-top:5px !important; padding-bottom:5px !important;
-}
-
-#navbar-brand {
-  color: #3c2639;
-  font-size: 18px;
-  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
-}
-
-#my-brand {
-  margin-top: 130px;
-  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
-  color: #FAF9F4;
-  color: rgba(253,249,234,0.92);
-}
-
-.menu-items {
-  padding-right: 15px;
-}
-
-#menu-items a {
-  color: #3c2639;
-  font-size: 16px;
-}
-
-.search-box {
-  width: 300px;
-  height: 35px;
-  border-radius: 10px;
-  margin-left: 50px;
-}
-
-.button-normal {
-  background-color: #FAF9F4;
-  background-color: rgba(253,249,234,0.92);
-  color: #3c2639;
-  margin: 0 10px;
-}
-
-.button-normal:hover {
-  background-color: #E0D6A5;
-}
-
-.button-opposite {
-  color: #FAF9F4;
-  background-color: #3c2639;
-  margin: 0 10px;
-}
-
-.button-opposite:hover {
-  color: #FAF9F4;
-  background-color: #8a5884;
-}
-
-.button-opposite:focus {
-  color: #FAF9F4;
-  background-color: #8a5884;
-}
-
-/* messages */
-
-.field_with_errors {
-  color: #ff3333;
-  background-color: #FFEEEE;
-  border-radius: 3px;
-  padding:8px;
-}
-
-.close {
- float: none;
- margin: 0 auto;
- opacity: 0.4;
- filter: alpha(opacity=40);
-}
 
 body {
   font-family: 'montserratregular','sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
@@ -96,6 +9,7 @@ body {
 
 a {
   color: #6b4466;
+  color: #886984;
 }
 
 a:hover {
@@ -146,6 +60,100 @@ blockquote p {
 
 .main {
   margin-top: 100px;
+}
+
+/* buttons */
+
+
+.button-normal {
+  background-color: #FAF9F4;
+  background-color: rgba(253,249,234,0.92);
+  color: #3c2639;
+  margin: 0 10px;
+}
+
+.button-normal:hover {
+  background-color: #E0D6A5;
+}
+
+.button-opposite {
+  color: #FAF9F4;
+  background-color: #3c2639;
+  margin: 0 10px;
+}
+
+.button-opposite:hover {
+  color: #FAF9F4;
+  background-color: #8a5884;
+}
+
+.button-opposite:focus {
+  color: #FAF9F4;
+  background-color: #8a5884;
+}
+
+/* messages */
+
+.field_with_errors {
+  color: #ff3333;
+  background-color: #FFEEEE;
+  border-radius: 3px;
+  padding:8px;
+}
+
+.close {
+ float: none;
+ margin: 0 auto;
+ opacity: 0.4;
+ filter: alpha(opacity=40);
+}
+
+
+/* navbar */
+
+.navbar {
+  background: #FAF9F4;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.navbar-default .navbar-brand {
+  //color: #5C5858;
+  font-family: 'sinkin_sans500_medium',"Proxima Nova","Open Sans",sans-serif;
+  font-size:22px;
+}
+
+
+.navbar-nav > li > a {
+  padding-top:5px !important; padding-bottom:5px !important;
+}
+
+#navbar-brand {
+  color: #3c2639;
+  font-size: 18px;
+  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+}
+
+#my-brand {
+  margin-top: 130px;
+  font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+  color: #FAF9F4;
+  color: rgba(253,249,234,0.92);
+}
+
+.menu-items {
+  padding-right: 15px;
+}
+
+#menu-items a {
+  color: #3c2639;
+  font-size: 16px;
+}
+
+.search-box {
+  width: 300px;
+  height: 35px;
+  border-radius: 10px;
+  margin-left: 50px;
 }
 
 /* sticky footer http://timothylong.com/responsive-sticky-footer/*/
