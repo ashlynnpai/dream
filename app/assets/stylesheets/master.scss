@@ -272,7 +272,7 @@ body {
 img {
   max-width: 100%;
 }
-@media (max-width: 600px) {
+@media only screen and (max-width: 768px) {
   .search-box {
     width: 180px;
     height: 30px;
@@ -285,8 +285,17 @@ img {
     font-size: 12px;
     padding: 2px;
   }
+  
+    .thumbnail-index {
+    margin-bottom: 30px;
+  }
+  
 }
 
 @media only screen and (max-device-width : 480px) {
+  .thumbnail-index {
+    margin-left: auto;
+    margin-right: auto;
+  }
 
 }
