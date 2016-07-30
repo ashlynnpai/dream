@@ -1,5 +1,7 @@
 <div class="container main">
-  <%= render 'shared/messages' %>
+  <% if alert.present? %>
+    <a href="#" class="alert alert-info close" data-dismiss="alert" aria-label="close"><%= notice %> &times; </a>
+  <% end %>
   <div class="booyah-box col-xs-8 col-xs-offset-2 user-forms">
     <h2>Sign in</h2>
     <br />
