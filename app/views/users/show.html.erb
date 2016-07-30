@@ -10,7 +10,7 @@
   <% else %>  
      <% @buckets.each do |bucket| %>
        <div class="booyah-box">
-         <h4><%= bucket.place.name %></h4>
+         <h4><%= link_to bucket.place.name, place_path(bucket.place) %></h4>
        </div>  
      <% end %>
   <% end %>
@@ -23,7 +23,7 @@
   <% else %>  
      <% @completed_buckets.each do |bucket| %>
        <div class="booyah-box">
-         <h4><%= bucket.place.name %></h4>
+         <h4><%= link_to bucket.place.name, place_path(bucket.place) %></h4>
        </div>  
      <% end %>
   <% end %>
@@ -36,7 +36,7 @@
   <% else %>  
      <% @comments.each do |comment| %>
        <div class="booyah-box">
-         <p><%= comment.place.name %></p>
+         <p><%= link_to comment.place.name, place_path(comment.place) %></p>
          <p><%= comment.rating %></p>
          <p><%= comment.message %></p>
        </div>  
