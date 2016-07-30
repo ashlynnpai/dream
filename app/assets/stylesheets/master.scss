@@ -266,6 +266,17 @@ body {
   padding-top: 5px;
 }
 
+/* dashboard */
+
+.dashboard-info {
+  margin: 30px 0;
+}
+
+.dashboard-info {
+  img {
+    height: 70px;
+  }
+}
 
 /* responsive */
 
@@ -286,9 +297,13 @@ img {
     padding: 2px;
   }
   
-    .thumbnail-index {
+  .thumbnail-index {
     margin-bottom: 30px;
   }
+  
+  .dashboard-info {
+  display: none;
+}
   
 }
 
