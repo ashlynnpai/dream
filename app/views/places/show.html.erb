@@ -2,7 +2,7 @@
   <%= render 'shared/messages' %>
   <div class="row booyah-box">
 
-    <div class="col-xs-4">  
+    <div class="col-md-4">  
       <h1><%= @place.name %></h1>
       <i><%= @place.address %></i>
       <br/><br/>
@@ -47,7 +47,7 @@
   <% if @place.photos.any? %>
     <div class="row place-photos">
       <% @place.photos.last_three_photos(@place).each do |photo| %>
-        <div class="col-xs-4"> 
+        <div class="col-md-4"> 
           <div id="mycarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
               <div class="item active">
@@ -61,6 +61,7 @@
         </div>  
        <% end %>
       </div>
+    <br />
   <h4><%= link_to 'See All Photos', galleries_path(place_id: @place.id) %></h4>
   <% end %>
   
