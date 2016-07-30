@@ -113,7 +113,7 @@ blockquote p {
 
 .navbar {
   background: #FAF9F4;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 .navbar-default .navbar-brand {
@@ -131,6 +131,7 @@ blockquote p {
   color: #3c2639;
   font-size: 18px;
   font-family: 'kaushan_scriptregular',"Proxima Nova","Open Sans",sans-serif;
+  color: #FAF9F4;
 }
 
 #my-brand {
@@ -147,6 +148,11 @@ blockquote p {
 #menu-items a {
   color: #3c2639;
   font-size: 16px;
+  color: #FFF;
+}
+
+#menu-items a:hover {
+  color: #bfd6c3;
 }
 
 .search-box {
