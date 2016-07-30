@@ -3,6 +3,33 @@
   <h1><%= @user.username %></h1>
   <br />
   <br />
+  <div class="row dashboard-info text-center">
+    <div class="col-md-4">
+      <%= image_tag 'bucket.png' %>
+      <br />
+      <br />
+      <h2>Buckets</h2>
+      <br />
+      <h1><%= @buckets.count %></h1>
+    </div>  
+    <div class="col-md-4">
+      <%= image_tag 'check.png' %>
+      <br />
+      <br />
+      <h2>Completed</h2>
+      <br />
+      <h1><%= @completed_buckets.count %></h1>
+    </div> 
+    <div class="col-md-4">
+      <%= image_tag 'pencil.png' %>
+      <br />
+      <br />
+      <h2>Comments</h2>
+      <br />
+      <h1><%= @user.comments.count %></h1>
+    </div> 
+  </div>  
+  <br />
   <h2>Bucket List</h2>
   <br />
   <% if @buckets.empty? %>
