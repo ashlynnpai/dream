@@ -237,9 +237,13 @@ body {
   //color: rgba(253,249,234,0.92);
 }
 
+.carousel-inner {
+  margin: 50px auto;
+}
+
 .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-    max-height: 550px;
-    width: 100%;}
+  width: 100%;
+}
 
 /* forms */
 
