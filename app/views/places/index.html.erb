@@ -2,17 +2,25 @@
   <%= render 'shared/messages' %>   
   <% @places.each do |place| %>
     <div class="booyah-box col-md-10 col-md-offset-1">
-      <div class="col-md-2 thumbnail-index">
+      <div class="col-md-3 thumbnail-index">
        <% if place.photos.any? %>
-        <%= image_tag(place.photos.first.image_url, :width=>'150', :height=>'150', :crop=>"fill") %>
+        <%= image_tag(place.photos.first.image_url, :width=>'200', :height=>'200', :crop=>"fill") %>
       <% else %>  
-        <%= image_tag('nasa.jpg', :width=>'150', :height=>'150') %>
+        <%= image_tag('nasa.jpg', :width=>'200', :height=>'200') %>
       <% end %>  
       </div>  
-      <div class="col-md-8" style="margin-left:30px;">
-      <h2><%= link_to place.name, place_path(place) %></h2><br />
-      <p><%= place.address %></p><br />
-      <p><%= place.description %></p><br />
+      <div class="col-md-7" style="margin-left:30px;">
+      <h2><%= link_to place.name, place_path(place) %></h2>
+      <p><%= place.address %></p>
+      <p><%= place.description %></p>
+      <% if place.avg_rating %>
+        <% place.avg_rating.to_i.times do %>
+          <%= image_tag('star-full.png') %>
+        <% end %>
+        <% if place.avg_rating % 1 > 0.2 && place.avg_rating % 1 < 0.8 %>
+          <%= image_tag('star-half.png') %>
+        <% end %>
+      <% end %>  
       </div>  
     </div>
 
