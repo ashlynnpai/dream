@@ -7,11 +7,13 @@
       <i><%= @place.address %></i>
       <br/>
       <br/>
-      <% @place.avg_rating.to_i.times do %>
-        <%= image_tag('star-full.png') %>
-      <% end %>
-      <% if @place.avg_rating % 1 > 0.2 && @place.avg_rating % 1 < 0.8 %>
-        <%= image_tag('star-half.png') %>
+      <% if @place.avg_rating %>
+        <% @place.avg_rating.to_i.times do %>
+          <%= image_tag('star-full.png') %>
+        <% end %>
+        <% if @place.avg_rating % 1 > 0.2 && @place.avg_rating % 1 < 0.8 %>
+          <%= image_tag('star-half.png') %>
+        <% end %>
       <% end %>
       <p><%= @place.description %></p>
 
@@ -36,7 +38,7 @@
     <div class="pull-right">
       <% if current_user %>
         <% if !(current_user.buckets.map(&:place).include?(@place)) %>
-          <%= link_to '+ Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn button-normal' %>
+          <%= link_to '+ Bucket List', bucketlist_path(place_id: @place), method: :post, class: 'btn button-opposite' %>
         <% end %>
       <% else %>
         <h4><%= link_to 'Sign in', new_user_session_path %> to comment</h4>
