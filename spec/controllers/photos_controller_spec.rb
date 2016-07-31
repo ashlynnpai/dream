@@ -33,6 +33,26 @@ RSpec.describe PhotosController, type: :controller do
         post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
         expect(Photo.first.place).to eq(place)
       end
+      
+      it 'does not create a 101st photo for a non-admin user' do
+        100.times { photo = Fabricate(:photo, user_id: user.id) }
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
+        expect(Photo.count).to eq(100)
+      end
+      
+      it 'fires an alert on a 101st photo for a non-admin user' do
+        100.times { photo = Fabricate(:photo, user_id: user.id) }
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: user.id
+        expect(flash[:alert]).to be_present
+        expect(response).to redirect_to place_path(place)
+      end
+      
+      it 'creates a 101st photo for an admin user' do
+        admin = Fabricate(:user, admin: true)
+        100.times { photo = Fabricate(:photo, user_id: admin.id) }
+        post :create, photo: Fabricate.attributes_for(:photo), place_id: place.id, user_id: admin.id
+        expect(Photo.count).to eq(101)
+      end
     end
     
     context 'with unauthenticated users' do
