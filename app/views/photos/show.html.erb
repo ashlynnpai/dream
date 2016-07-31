@@ -13,6 +13,8 @@
     <% end %>    
     </div>  
     <div class="col-md-3">
+      <h3><%= link_to @photo.place.name, place_path(@photo) %></h3>
+      <br />
       <h4><%= @photo.caption if @photo.caption? %></h4>
       <br />
       <h4><%= @photo.owner if @photo.owner? %></h4>
