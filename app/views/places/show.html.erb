@@ -8,6 +8,7 @@
       <i><%= @place.address %></i>
       <br/>
       <br/>
+      <h3>
       <% if @place.avg_rating %>
         <% @place.avg_rating.to_i.times do %>
           <%= image_tag('star-full.png') %>
@@ -16,6 +17,8 @@
           <%= image_tag('star-half.png') %>
         <% end %>
       <% end %>
+      </h3>
+      <br />
       <p><%= @place.description %></p>
 
       <div class="pull-left">
