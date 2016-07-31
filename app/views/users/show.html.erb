@@ -67,7 +67,11 @@
      <% @comments.each do |comment| %>
        <div class="booyah-box">
          <p><%= link_to comment.place.name, place_path(comment.place) %></p>
-         <p><%= comment.rating %></p>
+         <% if comment.rating %>
+            <% comment.rating.to_i.times do %>
+              <%= image_tag('star-full.png') %>
+            <% end %>
+          <% end %>
          <p><%= comment.message %></p>
        </div>  
      <% end %>
