@@ -18,7 +18,7 @@ class Place < ActiveRecord::Base
     end
   end
   
-  def rating
+  def avg_rating
     comments.average(:rating) if comments.average(:rating)
   end
   

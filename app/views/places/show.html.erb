@@ -5,8 +5,14 @@
     <div class="col-md-4">  
       <h1><%= @place.name %></h1>
       <i><%= @place.address %></i>
-      <br/><br/>
-      <p><%= @place.rating %></p>
+      <br/>
+      <br/>
+      <% @place.avg_rating.to_i.times do %>
+        <%= image_tag('star-full.png') %>
+      <% end %>
+      <% if @place.avg_rating % 1 > 0.2 && @place.avg_rating % 1 < 0.8 %>
+        <%= image_tag('star-half.png') %>
+      <% end %>
       <p><%= @place.description %></p>
 
       <div class="pull-left">
