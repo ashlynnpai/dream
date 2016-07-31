@@ -222,21 +222,12 @@ body {
   margin: 0;
 }
 
-
-.slideshow {
-  img {
-    width: 600px;
-    display: block;
-    margin: 100px auto;
-  }
-}
-
 .landing-page {
   text-align: center;
 }
 
 .info {
-  margin-top: 130px;
+  margin-top: 100px;
 }
 
 .info-section {
@@ -245,6 +236,10 @@ body {
   border: 30px solid #fdf9ea;
   //color: rgba(253,249,234,0.92);
 }
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+    max-height: 550px;
+    width: 100%;}
 
 /* forms */
 
