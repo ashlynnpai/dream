@@ -9,7 +9,7 @@
     <% else %>
       <% @buckets.each do |bucket| %>
         <div class="booyah-box col-xs-10 col-xs-offset-1">
-          <h3><%= bucket.place.name %></h3>
+          <h3><%= link_to bucket.place.name, place_path(bucket.place) %></h3>
           <br />
           <p><%= bucket.place.address %></p>
           <br />
