@@ -12,5 +12,4 @@ unesco_sites.map! do |site|
   { name: site[0], address: site[1], latitude: site[2], longitude: site[3] }
 end
 puts "seeding"
-binding.pry
 Place.create(unesco_sites)
