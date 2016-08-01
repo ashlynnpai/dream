@@ -2,7 +2,7 @@ class CompletedBucketsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @buckets = CompletedBuckets.for(current_user)
+    @completed_buckets = CompletedBuckets.for(current_user)
   end
   
   def destroy
