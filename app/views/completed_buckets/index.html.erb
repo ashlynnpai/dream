@@ -3,21 +3,24 @@
   <div class="col-xs-10 col-xs-offset-1">
     <h2>Checked off the bucket list.</h2>  
     <br />
-  </div>
-
-  <% @completed_buckets.each do |bucket| %>
-    <div class="booyah-box col-xs-10 col-xs-offset-1">
-      <h3><%= bucket.place.name %></h3>
-      <br />
-      <p><%= bucket.place.address %></p>
-      <br />
-      <div class="pull-right">
-        <%= link_to image_tag('bucket_delete.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
-        <br />
-        <p>Remove</p>  
-      </div>  
-    </div>
-  <% end %>
+    <% if @completed_buckets.empty? %>
+      <h4> No places visited yet.</h4>
+    <% else %>  
+      <% @completed_buckets.each do |bucket| %>
+        <div class="booyah-box col-xs-10 col-xs-offset-1">
+          <h3><%= bucket.place.name %></h3>
+          <br />
+          <p><%= bucket.place.address %></p>
+          <br />
+          <div class="pull-right">
+            <%= link_to image_tag('bucket_delete.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+            <br />
+            <p>Remove</p>  
+          </div>  
+        </div>
+      <% end %>
+    <% end %>
+  </div>  
 </div>  
 
 
