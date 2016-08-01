@@ -8,20 +8,22 @@
       <h4> Nothing on list yet.</h4>
     <% else %>
       <% @buckets.each do |bucket| %>
-        <h3><%= bucket.place.name %></h3>
-        <br />
-        <p><%= bucket.place.address %></p>
-        <br />
-        <div class="pull-left">
-          <%= link_to image_tag('check.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>  
-            <br />
-            <p>I did it!</p>  
-        </div>  
-        <div class="pull-right">
-          <%= link_to image_tag('bucket_delete.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+        <div class="booyah-box col-xs-10 col-xs-offset-1">
+          <h3><%= bucket.place.name %></h3>
           <br />
-          <p>Remove</p>  
-        </div>  
+          <p><%= bucket.place.address %></p>
+          <br />
+          <div class="pull-left">
+            <%= link_to image_tag('check.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id, list_state: "done"}), method: :put %>  
+              <br />
+              <p>I did it!</p>  
+          </div>  
+          <div class="pull-right">
+            <%= link_to image_tag('bucket_delete.png', width: '50'), bucket_path(bucket, bucket: {id: bucket.id, place_id: bucket.place.id, user_id: current_user.id}), method: :delete %>
+            <br />
+            <p>Remove</p>  
+          </div>  
+        </div>    
       <% end %>
     <% end %>
   </div>
