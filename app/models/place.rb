@@ -5,6 +5,8 @@ class Place < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :photos, dependent: :destroy
   has_many :buckets, dependent: :destroy
+  has_many :place_categories
+  has_many :categories, through: :place_categories
   
   geocoded_by :address
   after_validation :geocode
