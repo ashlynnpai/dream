@@ -13,13 +13,23 @@
       <h2><%= link_to place.name, place_path(place) %></h2>
       <p><%= place.address %></p>
       <p><%= place.description %></p>
-      <% if place.avg_rating %>
-        <% place.avg_rating.to_i.times do %>
-          <%= image_tag('star-full.png') %>
-        <% end %>
-        <% if place.avg_rating % 1 > 0.2 && place.avg_rating % 1 < 0.8 %>
-          <%= image_tag('star-half.png') %>
-        <% end %>
+      <p>
+        <% if place.avg_rating %>
+          <% place.avg_rating.to_i.times do %>
+            <%= image_tag('star-full.png') %>
+          <% end %>
+          <% if place.avg_rating % 1 > 0.2 && place.avg_rating % 1 < 0.8 %>
+            <%= image_tag('star-half.png') %>
+          <% end %>
+        <% end %>   
+      </p>  
+      <br />  
+      <% if place.categories.any? %>
+        <p>
+          <% place.categories.each do |category| %>
+            <span class="category"><%= category.name %></span>
+          <% end %>
+        </p>  
       <% end %>  
       </div>  
     </div>
