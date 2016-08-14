@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
   before_filter :store_current_location, :unless => :devise_controller?
 
   protected
+  
+  def after_sign_in_path_for(resource)
+    if params[:redirect_to] 
+      root_path
+    else
+      super
+    end
+  end
 
   def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:sign_in, keys: [:email])

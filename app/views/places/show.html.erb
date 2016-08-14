@@ -35,9 +35,13 @@
       <button class="btn pull-right button-opposite" data-toggle="modal" data-target="#photoModal">
         Add a photo
       </button>
-      <button class="btn pull-right button-opposite" data-toggle="modal" data-target="#commentModal">
-        Add a comment
-      </button>
+      <% if current_user %>
+        <button class="btn pull-right button-opposite" data-toggle="modal" data-target="#commentModal">
+          Add a comment
+        </button>
+      <% else %>
+        <%= link_to 'Add a comment', new_user_session_path(redirect_to: place_path(@place,{comment_modal: true})) %>
+      <% end %>
     </div>
     <div class="pull-right">
       <% if current_user %>
@@ -124,6 +128,12 @@
   <% end %>
 </div>  
 
-
+<script>
+  $(function(){
+    <% if params[:comment_modal] %>
+      $('#commentModal').modal('show');
+    <% end %>
+  });
+</script>  
 
 
