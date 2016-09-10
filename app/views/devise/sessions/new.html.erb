@@ -1,11 +1,12 @@
 <div class="container main">
   <%= render 'shared/messages'%>
-  <div class="booyah-box col-xs-8 col-xs-offset-2 user-forms">
+  <div class="booyah-box col-xs-6 col-xs-offset-3 user-forms">
     <h2>Sign in</h2>
     <br />
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="form-inputs">
         <%= f.input :email, required: false, autofocus: true %>
+        <br />
         <%= f.input :password, required: false %>
       </div>
       <br />

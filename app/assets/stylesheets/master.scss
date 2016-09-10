@@ -69,6 +69,18 @@ blockquote p {
   border-radius: 10px;
 }
 
+.form-control:focus {
+  border-color: #3c2639;
+  box-shadow: inset 0 1px 1px rgba(253,249,234,0.92), 0 0 8px rgba(253,249,234,0.92);
+}
+
+textarea:focus, input:focus, .uneditable-input:focus {   
+    border-color: #3c2639 !important;
+    box-shadow: 0 1px 1px #3c2639 inset, 0 0 8px #3c2639 !important;
+    outline: 0 none !important;
+}
+
+
 /* buttons */
 
 
@@ -163,10 +175,11 @@ blockquote p {
 }
 
 .search-box {
-  width: 300px;
+  width: 250px;
   height: 35px;
   border-radius: 10px;
   margin-left: 50px;
+  background: #fdf9ea;
 }
 
 /* sticky footer http://timothylong.com/responsive-sticky-footer/*/
@@ -221,7 +234,7 @@ body {
 /* landing page statics index */
 
 .jumbotron {
-  background-image: url(zhu_difeng.jpg);
+  background-image: url(zhu_difeng-min.jpg);
   background-position: 0% 25%;
   background-size: cover;
   background-repeat: no-repeat;

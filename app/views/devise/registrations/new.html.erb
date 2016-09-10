@@ -1,6 +1,6 @@
 <div class="container main">
   <%= render 'shared/messages' %>
-  <div class="booyah-box col-xs-8 col-xs-offset-2 user-forms">
+  <div class="booyah-box col-xs-6 col-xs-offset-3 user-forms">
     <h2>Sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -9,8 +9,11 @@
       <div class="form-inputs">
         <br />
         <%= f.input :username, required: true, label: ("Username will be displayed publicly") %>
+        <br />
         <%= f.input :email, required: true, autofocus: true %>
+        <br />
         <%= f.input :password, required: true %>
+        <br />
         <%= f.input :password_confirmation, required: true %>
         <br />
       </div>
