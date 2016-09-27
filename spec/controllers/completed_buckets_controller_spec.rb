@@ -14,7 +14,7 @@ RSpec.describe CompletedBucketsController, type: :controller do
         bucket1 = Bucket.create(place_id: place.id, user_id: user.id, list_state: 'todo')
         bucket2 = Bucket.create(place_id: place2.id, user_id: user.id, list_state: 'done')
         get :index
-        expect(assigns(:buckets)).to eq([bucket2])
+        expect(assigns(:completed_buckets)).to eq([bucket2])
       end
     end
   end
