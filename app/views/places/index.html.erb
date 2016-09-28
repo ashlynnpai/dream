@@ -31,9 +31,12 @@
           <% end %>
         </p>  
       <% end %>  
+      <% if current_user && current_user.admin %>
+        <p class="warn"><%= link_to "Delete Place", admin_place_path(place), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></p>
+      <% end %>  
       </div>  
     </div>
-
+    
     <hr />
   <% end %>
 

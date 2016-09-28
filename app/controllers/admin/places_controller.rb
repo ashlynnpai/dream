@@ -5,6 +5,6 @@ class Admin::PlacesController < AdminsController
   def destroy
     @place = Place.find(params[:id])
     @place.destroy
-    redirect_to dashboard_path
+    redirect_to places_path
   end
 end
