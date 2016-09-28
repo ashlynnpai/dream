@@ -39,6 +39,9 @@
     <h4><%= link_to result.name, place_path(result) %></h4>
     <p><%= result.address %></p>
     <br />
+    <% if current_user && current_user.admin %>
+      <p class="warn"><%= link_to "Delete Place", admin_place_path(result), method: :delete, data: { confirm: "Are you certain you want to delete #{result.name}" } %></p>
+    <% end %>  
   <% end %>
 </div>
 
