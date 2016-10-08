@@ -37,7 +37,6 @@ RSpec.configure do |config|
   DatabaseCleaner.strategy = :truncation
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :view
-
 end
 
 Shoulda::Matchers.configure do |config|

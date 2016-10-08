@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Admin::PlacesController, type: :controller do
+
   describe 'DELETE destroy' do
     context 'as admin' do
       let(:user)  { Fabricate(:user) }
@@ -15,7 +16,7 @@ describe Admin::PlacesController, type: :controller do
         expect(Place.count).to eq(0)
       end
     end
-    
+
     context 'not as admin' do
       let(:user)  { Fabricate(:user) }
       let(:place) { Fabricate(:place, user_id: user.id) }

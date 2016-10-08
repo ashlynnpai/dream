@@ -4,11 +4,20 @@
     <h1>Enter Your Place Details</h1>
     <br />
     <%= simple_form_for @place do |f| %>
-      <h3>Name: <%= @place.name %></h3>
-      <h3>Address: <%= @place.address %></h3>
+      <% if current_user.admin == true %>
+        <%= f.input :name %>
+        <br />
+        <%= f.input :address %>
+        <br />
+      <% else %>
+        <h3>Name: <%= @place.name %></h3>
+        <br />
+        <h3>Address: <%= @place.address %></h3>
+        <br />
+      <% end %>
       <%= f.input :description %>
       <br />
       <%= f.submit 'Update', class: 'btn btn-primary' %>
     <% end %>
   </div>
-</div>  
+</div>
