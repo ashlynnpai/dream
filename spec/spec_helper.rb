@@ -3,6 +3,8 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'database_cleaner'
+require 'webmock/rspec'
+WebMock.disable_net_connect!(allow_localhost: true)
 
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
@@ -14,6 +16,9 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    stub_request(:get, /dev.virtualearth.net/).
+         with(:headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host'=>'dev.virtualearth.net', 'User-Agent'=>'Ruby'}).
+         to_return(:status => 200, :body => 'stubbed response', :headers => {})
   end
 
   config.after(:each) do
