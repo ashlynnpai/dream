@@ -40,7 +40,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'fabrication'
   gem 'faker'
-  gem 'webmock'
 end
 
 group :test do
